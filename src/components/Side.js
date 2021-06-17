@@ -2,11 +2,11 @@ import React from 'react'
 import MusicPlayer from './MusicPlayer'
 import Playlist from './Playlist'
 
-const Side = () => {
+const Side = ({currentPlaylist}) => {
 	return(
 		<div className='side'>
 				<MusicPlayer />
-				<Playlist />
+				<Playlist currentPlaylist={currentPlaylist}/>
 		</div>
 		
 	)

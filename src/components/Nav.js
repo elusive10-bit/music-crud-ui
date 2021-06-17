@@ -2,7 +2,7 @@ import React from "react"
 
 const Nav = () => {
 	return (
-		<div class='nav'>
+		<div className='nav'>
 			<div id='logo'>
 				<img src='images/logo.svg' alt='' id='logo' />
 			</div>

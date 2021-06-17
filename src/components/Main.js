@@ -1,12 +1,13 @@
 import React from 'react'
 import Side from './Side'
 import Results from './Results'
-const Main = () => {
+const Main = ({results, currentPlaylist}) => {
+	console.log("Main", results)
 	return(
 		<div className='main'>
-			<Side/>
+			<Side currentPlaylist={currentPlaylist}/>
 
-			<Results/>
+			<Results results={results}/>
 		</div>
 	)
 }

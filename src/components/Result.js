@@ -1,10 +1,10 @@
 import React from "react"
 
-const Result = (props) => {
+const Result = ({result}) => {
     return(
-        <div className="card">
-            <h1>Result</h1>
-        </div>
+        <li>
+            <h1>{result.name}</h1>
+        </li>
     );
     
 }

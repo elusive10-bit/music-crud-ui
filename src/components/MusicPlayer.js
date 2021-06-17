@@ -13,14 +13,8 @@ const MusicPlayer = () => {
 				<img src='images/next.svg' alt='' />
 			</div>
 			<div id='timeline'>
-				<div id='timeStart'>
-					<p>01:25</p>
-				</div>
 				<div id='timelineImage'>
 					<img src='images/timeLine.svg' alt='' />
-				</div>
-				<div id='timeEnd'>
-					<p>04:11</p>
 				</div>
 			</div>
 		</div>
