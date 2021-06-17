@@ -4,13 +4,15 @@ import React, {useState} from "react";
 
 const App = (props) => {
 	const [playlist, setPlaylist] = useState(props.currentPlaylist)
+	const [results, setResults] = useState(props.results)
 	return (
     <div className="container">
 				<Nav/>
 				<Main 
 				currentPlaylist={playlist}
 				setPlaylist={setPlaylist}  
-				results={props.results}
+				results={results}
+				setResults={setResults}
 				/>
 					
     </div>

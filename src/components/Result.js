@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Result = ({result, currentPlaylist, setPlaylist}) => {
+const Result = ({result, results, setResults, currentPlaylist, setPlaylist}) => {
 	
 	const handleClick = () => {
 		const resultObject = {
@@ -9,16 +9,22 @@ const Result = ({result, currentPlaylist, setPlaylist}) => {
 			artist: result.artist,
 			isAdded: !result.isAdded
 		}
-		result.map(result => {
-			return {...result, isAdded: !result.isAdded}
+		
+		const resultToUpdate = results.map(item => {
+			if(item.id === result.id) {
+				return {...item, isAdded: !result.isAdded}
+			}
+			return item
 		})
+
+		setResults(resultToUpdate)
+
 		setPlaylist(currentPlaylist.concat(resultObject))
-		console.log(currentPlaylist)
 	}
 	return (
 		<li>
 			{result.name}
-			{!result.isAdded ? <button onClick={handleClick}>Add to current Playlist</button> : "(Song already added to playlist)" }
+			{!result.isAdded ? <button onClick={handleClick}>Add to current Playlist</button> : <span className="alreadyAdded"> (Song already added to playlist) </span> }
 			
 		</li>
 	)

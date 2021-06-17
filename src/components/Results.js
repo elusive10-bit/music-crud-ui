@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import Result from './Result'
 
-const Results = ({results, setPlaylist, currentPlaylist}) => {
-	const [searchItem, setSearchItem] = useState('')
+const Results = ({results, setResults, currentPlaylist, setPlaylist}) => {
+	const [searchItem, setSearchItem] = useState('Vocaloid')
 
 	const handleChange = (event) => {
 		setSearchItem(event.target.value)
@@ -40,6 +40,9 @@ const Results = ({results, setPlaylist, currentPlaylist}) => {
 								setPlaylist={setPlaylist}
 								currentPlaylist={currentPlaylist}
 								result={result}
+								results={results}
+								setResults={setResults}
+								
 							/>
 						) 
 					})}

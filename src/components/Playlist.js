@@ -1,18 +1,20 @@
 import React from 'react'
-
-const Playlist = ({currentPlaylist}) => {
-	console.log("Playlist: ", currentPlaylist)
+import PlaylistItem from './PlaylistItem'
+const Playlist = ({currentPlaylist, setPlaylist, results, setResults}) => {
 	return (
 		<div className='playlist'>
 			<h2>Current Playlist</h2>
 			<ul>
-				{
-					currentPlaylist.map(playlist => {
-						return(
-							<li key={playlist.id}>{playlist.name}</li>
-						)
-					})
-				}
+				{currentPlaylist.map((playlistItem) => (
+					<PlaylistItem
+						key={playlistItem.id}
+						playlistItem={playlistItem}
+						currentPlaylist={currentPlaylist}
+						setPlaylist={setPlaylist}
+						results={results}
+						setResults={setResults}
+					/>
+				))}
 			</ul>
 		</div>
 	)

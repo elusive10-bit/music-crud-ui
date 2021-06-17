@@ -2,16 +2,21 @@ import React from 'react'
 import Side from './Side'
 import Results from './Results'
 
-const Main = ({results, currentPlaylist, setPlaylist}) => {
-	console.log("Main", results)
+const Main = ({results, setResults, currentPlaylist, setPlaylist}) => {
 	return (
 		<div className='main'>
-			<Side currentPlaylist={currentPlaylist} />
+			<Side
+				currentPlaylist={currentPlaylist}
+				setPlaylist={setPlaylist}
+				results={results}
+				setResults={setResults}
+			/>
 
 			<Results
 				setPlaylist={setPlaylist}
 				currentPlaylist={currentPlaylist}
 				results={results}
+				setResults={setResults}
 			/>
 		</div>
 	)

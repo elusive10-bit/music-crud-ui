@@ -80,3 +80,7 @@ code {
 .results {
 	background-color: rgba(0,0,0, .3)
 }
+
+.alreadyAdded {
+	font-weight: 700;
+}

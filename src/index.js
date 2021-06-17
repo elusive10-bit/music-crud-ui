@@ -5,12 +5,12 @@ import App from './App';
 import { nanoid } from "nanoid";
 
 const currentPlaylist = [
-  { id: "song-" + nanoid(), name: "Glow", artist: "Vocaloid", isAdded: false}
+
 ];
 
 const results = [
   { id: "song-" + nanoid(), name: "Gallows Bell", artist: "Vocaloid", isAdded: false},
-  { id: "song-" + nanoid(), name: "Glow", artist: "Vocaloid", isAdded: true},
+  { id: "song-" + nanoid(), name: "Glow", artist: "Vocaloid", isAdded: false},
   { id: "song-" + nanoid(), name: "Hysteria", artist: "Vocaloid", isAdded: false},
   { id: "song-" + nanoid(), name: "Mirai e", artist: "Unknown", isAdded: false},
   { id: "song-" + nanoid(), name: "Crossroads", artist: "Vocaloid", isAdded: false},
