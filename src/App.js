@@ -1,54 +1,47 @@
-// import logo from './logo.svg';
-// import './App.css';
 import Result from './components/Result.js'
 import Playlist from './components/Playlist.js'
-
 
 import React, { useState } from "react";
 import { nanoid } from "nanoid";
 
-function App(props) {
-  const [songs, setSong] = useState(props.songs);
-  const [name, setName] = useState('');
-  const [songResults, setResults] = useState(props.songResults);
-  const [isAdded, setIsAdded] = useState(props.songResults);
+const App = (props) => {
+  const [songs, setSongs] = useState(props.songs);
+  const [songName, setSongName] = useState('');
+  const [results, setResults] = useState(props.results);
+  const [isAdded, setIsAdded] = useState(false);
 
-  function handleChange(e) {
-    // console.log(e.target.value);
-    setName(e.target.value);  
+  const handleChange = (event) => {
+    setName(event.target.value);  
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    if(name !== "") {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if(name) {
       addSong(name);
       setName('');
     }
       
     else
       alert("Please add something");
-    
   }
 
-  function addSong(name) {
+  const addSong = (name) => {
     const newSong = {id: "song-" + nanoid(), name: name, artist: "Vacaloid", isAdded: true};
-    setSong([...songs, newSong]);
+    setSongs([...songs, newSong]);
   } 
 
-  function toggleIsAdded(id) {
-    const editedSongList = songResults.map(songResult => {
-      if(id === songResult.id) {
-        console.log(!songResult.isAdded);
-        return { ...songResult, isAdded: !songResult.isAdded}
-      }
-      return songResult;
-    });
+  const toggleIsAdded = (id) => {
+    const editedSongList = results.map(result => {
+      (id === result.id) 
+				? { ...result, isAdded: !songResult.isAdded}
+      	: result
+    })
 
     setResults(editedSongList);
     console.log(editedSongList);
   }
 
-  function addResultToPlaylist(name, id) {
+  const addResultToPlaylist(name, id) => {
     const newSong = {id: id, name: name, artist: "Vacaloid"};
     setSong([...songs, newSong]);
 
@@ -59,6 +52,8 @@ function App(props) {
       }
       return songResult;
     });
+
+		setSong()
 
     toggleIsAdded(id);
     
