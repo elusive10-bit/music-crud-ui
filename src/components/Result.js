@@ -24,7 +24,7 @@ const Result = ({result, results, setResults, currentPlaylist, setPlaylist}) => 
 	return (
 		<li>
 			{result.name}
-			{!result.isAdded ? <button onClick={handleClick}>Add to current Playlist</button> : <span className="alreadyAdded"> (Song already added to playlist) </span> }
+			{!result.isAdded ? <button onClick={handleClick}><img src='/images/add.svg/'/></button> : <span className="alreadyAdded"> (Song already added to playlist) </span> }
 			
 		</li>
 	)

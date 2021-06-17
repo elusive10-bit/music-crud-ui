@@ -28,9 +28,6 @@ const Results = ({results, setResults, currentPlaylist, setPlaylist}) => {
 			</div>
 
 			<div id='results-container'>
-				<div>
-					<h1>Results</h1>
-				</div>
 
 				<ul>
 					{results.map((result) => {
