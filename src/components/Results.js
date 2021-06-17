@@ -25,21 +25,19 @@ const Results = ({results, setResults, currentPlaylist, setPlaylist}) => {
 				/>
 			</form>
 
-
 			<div className='results-container'>
-					{results.map((result) => {
-						return (
-							<Result
-								key={result.id}
-								setPlaylist={setPlaylist}
-								currentPlaylist={currentPlaylist}
-								result={result}
-								results={results}
-								setResults={setResults}
-								
-							/>
-						) 
-					})}
+				{results.map((result) => {
+					return (
+						<Result
+							key={result.id}
+							setPlaylist={setPlaylist}
+							currentPlaylist={currentPlaylist}
+							result={result}
+							results={results}
+							setResults={setResults}
+						/>
+					)
+				})}
 			</div>
 		</div>
 	)

@@ -1,6 +1,12 @@
 import React from 'react'
 
-const PlaylistItem = ({playlistItem, setPlaylist, currentPlaylist, results, setResults}) => {
+const PlaylistItem = ({
+	playlistItem,
+	setPlaylist,
+	currentPlaylist,
+	results,
+	setResults,
+}) => {
 	const handleClick = () => {
 		const updatedResults = results.map((item) => {
 			if (item.id === playlistItem.id) {
@@ -10,14 +16,14 @@ const PlaylistItem = ({playlistItem, setPlaylist, currentPlaylist, results, setR
 		})
 
 		setResults(updatedResults)
-		
+
 		const itemToRemove = currentPlaylist.find(
 			(item) => item.id === playlistItem.id
 		)
 		setPlaylist(currentPlaylist.filter((item) => item.id !== itemToRemove.id))
 	}
-			
-	return(
+
+	return (
 		<li>
 			{playlistItem.name}
 			<button onClick={handleClick}>Remove</button>
