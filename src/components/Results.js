@@ -15,21 +15,18 @@ const Results = ({results, setResults, currentPlaylist, setPlaylist}) => {
 	return (
 		<div className='results'>
 			<h2>Results</h2>
-			<div id='search'>
-				<form onSubmit={handleSubmit}>
-					<img src='images/search.svg' alt='' />
-					<input
-						type='text'
-						placeholder='Search'
-						onChange={handleChange}
-						value={searchItem}
-					/>
-				</form>
-			</div>
+			<form id='search' onSubmit={handleSubmit}>
+				<img src='images/search.svg' alt='' />
+				<input
+					type='text'
+					placeholder='Search'
+					onChange={handleChange}
+					value={searchItem}
+				/>
+			</form>
 
-			<div id='results-container'>
 
-				<ul>
+			<div className='results-container'>
 					{results.map((result) => {
 						return (
 							<Result
@@ -43,7 +40,6 @@ const Results = ({results, setResults, currentPlaylist, setPlaylist}) => {
 							/>
 						) 
 					})}
-				</ul>
 			</div>
 		</div>
 	)

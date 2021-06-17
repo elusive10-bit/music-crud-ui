@@ -22,11 +22,24 @@ const Result = ({result, results, setResults, currentPlaylist, setPlaylist}) => 
 		setPlaylist(currentPlaylist.concat(resultObject))
 	}
 	return (
-		<li>
-			{result.name}
-			{!result.isAdded ? <button onClick={handleClick}><img src='/images/add.svg/'/></button> : <span className="alreadyAdded"> (Song already added to playlist) </span> }
+		<div className="card">
+			<div className="card-image">
+				<img src="images/playThumbnail.svg"/>
+			</div>
+
+			<div className="card-body">
+				<h3>
+				{result.name}
+				</h3>
+				
+				<div className="button-container">
+				{!result.isAdded ? <button onClick={handleClick}>add</button> : <span className="alreadyAdded"> (added) </span> }
+				</div>
+						
+			</div>
 			
-		</li>
+			
+		</div>
 	)
 }
 
