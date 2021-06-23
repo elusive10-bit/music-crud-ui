@@ -82,12 +82,12 @@ ul {
 	justify-content: space-between;
 	margin-bottom: 10px;
 	border-radius: 5px;
-	box-shadow: 1px 2px 2px 1px #0003;
+	box-shadow: 2px 2px 5px 1px #317c4a;;
 	font-size: 1.1rem;
 	color: #000;
-	animation-name: background-new;
+	animation-name: background-new, rotateObject;
 	animation-play-state: running;
-	animation-duration: .7s;
+	animation-duration: .7s, .7s;
 }
 
 .main-container {
@@ -95,13 +95,12 @@ ul {
 }
 
 @keyframes background-new {
-	from {
+	0% {
 		background-color: rgba(172, 172, 172, 0.2);
 		opacity: .3;
 	}
-	
-	to {
-		transform: scale(1);
+
+	100% {
 		background-color: #fff;
 		opacity: 1;
 	}
@@ -124,5 +123,28 @@ ul {
 	
 	to {
 		background-color: #fff;
+	}
+}
+
+@keyframes rotateObject {
+	0% {
+		transform: rotate(5deg);
+	}
+
+	
+	25% {
+		transform: rotate(-5deg);
+	}
+	
+	50% {
+		transform: rotate(5deg)
+	}
+	
+	75% {
+		transform: rotate(-5deg);
+	}
+	
+	100% { 
+		tranform: rotate(0deg);
 	}
 }
