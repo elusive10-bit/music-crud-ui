@@ -29,11 +29,11 @@ const PlaylistItem = ({
 
 	return (
 		<>
-		<Col xs={3} sm={3} md={12} className='playlist-item'>
-			<Col xs={12} md={8}>
+		<Col xs={5} sm={3} md={12} className='playlist-item'>
+			<Col xs={12} md={6}>
 			{playlistItem.name}
 			</Col>
-			<Col xs='auto' md='auto'>
+			<Col xs='auto' md='auto' className='button-container'>
 			<Button variant='danger' onClick={handleClick}>Remove</Button>
 			</Col>
 		</Col>
