@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container, Button, Col, Row } from 'react-bootstrap'
+import { toast } from 'react-toastify'
 const Result = ({
 	result,
 	results,
@@ -22,6 +23,7 @@ const Result = ({
 			return item
 		})
 
+		toast.success(`${resultObject.name} is added on playlist`)
 		setResults(resultToUpdate)
 
 		setPlaylist(currentPlaylist.concat(resultObject))
