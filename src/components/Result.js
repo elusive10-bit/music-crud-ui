@@ -34,11 +34,11 @@ const Result = ({
 				<img src='images/playThumbnail.svg' />
 			</div> */}
 				<Row className='card-body'>
-					<Col xs={8} sm={8} md={12} lg={12} >
+					<Col xs={12} sm={8} md={12} lg={12} >
 						<h3>{result.name}</h3>
 					</Col>
 
-					<Col xs={4} sm='auto' md='auto' lg='auto' class='button-container'>
+					<Col xs='auto' sm='auto' md='auto' lg='auto' class='button-container'>
 						{!result.isAdded ? (
 							<Button variant='success' onClick={handleClick}>
 								Add

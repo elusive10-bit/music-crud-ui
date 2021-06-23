@@ -74,3 +74,6 @@ ul {
 	font-size: 1.1rem;
 }
 
+.main-container {
+	box-shadow: 2px 3px 3px 1px #0005;
+}

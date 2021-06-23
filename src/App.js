@@ -9,10 +9,10 @@ const App = (props) => {
 	const [results, setResults] = useState(props.results)
 	return (
 		<div>
-		<ToastContainer newestOnTop={true} autoClose={3000} />
+		{/* <ToastContainer newestOnTop={true} autoClose={3000} /> */}
 			
 
-		<Container className='container'>
+		<Container className='main-container'>
 			<Row>
 				<Nav />
 			</Row>

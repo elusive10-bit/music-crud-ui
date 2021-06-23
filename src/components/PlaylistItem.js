@@ -29,7 +29,6 @@ const PlaylistItem = ({
 
 	return (
 		<>
-		<ToastContainer />
 		<Row className='playlist-item'>
 			<Col xl={8}>
 			{playlistItem.name}
