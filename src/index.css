@@ -17,11 +17,11 @@ h3 {
 }
 
 .nav {
-	background-color:	#2d7f48;
+	background-color:	#4f9b68;
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-between;
-	padding: 10px;
+	padding: 10px 20px;
 }
 
 .side {
@@ -30,11 +30,19 @@ h3 {
 }
 
 .result-added {
-	background-color: #0001;
+	background-color:rgba(121, 121, 121, 0.2);
+	animation-name: set-to-added;
+	animation-duration: 1s;
+}
+
+.result-removed {
+	animation-name: set-to-not-added;
+	animation-duration: 1s;
 }
 
 .card {
 	margin-bottom: 10px;
+	box-shadow: 3px 3px 10px 1px #00000021;
 }
 
 ul {
@@ -53,6 +61,9 @@ ul {
 
 .side, .results {
 	padding: 20px;
+	height: 600px;
+	min-height: 600px;
+	overflow: auto;
 }
 
 .results-container {
@@ -74,8 +85,44 @@ ul {
 	box-shadow: 1px 2px 2px 1px #0003;
 	font-size: 1.1rem;
 	color: #000;
+	animation-name: background-new;
+	animation-play-state: running;
+	animation-duration: .7s;
 }
 
 .main-container {
 	box-shadow: 2px 3px 3px 1px #0005;
+}
+
+@keyframes background-new {
+	from {
+		background-color: rgba(172, 172, 172, 0.2);
+		opacity: .3;
+	}
+	
+	to {
+		transform: scale(1);
+		background-color: #fff;
+		opacity: 1;
+	}
+}
+
+@keyframes set-to-added {
+	from {
+		background-color: #fff;
+	}
+
+	to {
+		background-color:rgba(121, 121, 121, 0.2);
+	}
+}
+
+@keyframes set-to-not-added {
+	from {
+		background-color:rgba(121, 121, 121, 0.2);
+	}
+	
+	to {
+		background-color: #fff;
+	}
 }

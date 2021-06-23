@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Container, Button, Col, Row } from 'react-bootstrap'
 import { toast } from 'react-toastify'
 const Result = ({
@@ -8,6 +8,8 @@ const Result = ({
 	currentPlaylist,
 	setPlaylist,
 }) => {
+	const [onStart, setOnStart] = useState(true)
+
 	const handleClick = () => {
 		const resultObject = {
 			id: result.id,
@@ -27,28 +29,38 @@ const Result = ({
 		setResults(resultToUpdate)
 
 		setPlaylist(currentPlaylist.concat(resultObject))
+		setOnStart(false)
 	}
-	return (
-		<div className={`card ${result.isAdded ? 'result-added' : ''}`}>
-			{/* <div className='card-image'>
-				<img src='images/playThumbnail.svg' />
-			</div> */}
-				<Row className='card-body'>
-					<Col xs={12} sm={8} md={12} lg={12} >
-						<h3>{result.name}</h3>
-					</Col>
 
-					<Col xs='auto' sm='auto' md='auto' lg='auto' class='button-container'>
-						{!result.isAdded ? (
-							<Button variant='success' onClick={handleClick}>
-								Add
-							</Button>
-						) : (
-							null
-						)}
-					</Col>
-				</Row>
-		</div>
+	const cardState = (
+		!onStart 
+		? (result.isAdded ) ? 'result-added' : 'result-removed'
+		: ''
+	)
+
+	return (
+		<Col  md={6} sm={6} lg={4} xl={3}>
+			<div className={`card ${cardState}`}>
+				{/* <div className='card-image'>
+					<img src='images/playThumbnail.svg' />
+				</div> */}
+					<Row className='card-body'>
+						<Col xs={12} sm={8} md={12} lg={12} >
+							<h3>{result.name}</h3>
+						</Col>
+
+						<Col xs='auto' sm='auto' md='auto' lg='auto' className='button-container'>
+							{!result.isAdded ? (
+								<Button variant='success' onClick={handleClick}>
+									Add
+								</Button>
+							) : (
+								null
+							)}
+						</Col>
+					</Row>
+			</div>
+		</Col>
 	)
 }
 
