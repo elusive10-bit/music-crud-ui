@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Container, Button, Col, Row } from 'react-bootstrap'
 const Result = ({
 	result,
 	results,
@@ -27,22 +27,25 @@ const Result = ({
 		setPlaylist(currentPlaylist.concat(resultObject))
 	}
 	return (
-		<div className='card'>
-			<div className='card-image'>
+		<div className={`card ${result.isAdded ? 'result-added' : ''}`}>
+			{/* <div className='card-image'>
 				<img src='images/playThumbnail.svg' />
-			</div>
+			</div> */}
+				<Row className='card-body'>
+					<Col xs={8} sm={8} md={12} lg={12} >
+						<h3>{result.name}</h3>
+					</Col>
 
-			<div className='card-body'>
-				<h3>{result.name}</h3>
-
-				<div className='button-container'>
-					{!result.isAdded ? (
-						<button onClick={handleClick}>add</button>
-					) : (
-						<span className='alreadyAdded'> (added) </span>
-					)}
-				</div>
-			</div>
+					<Col xs={4} sm='auto' md='auto' lg='auto' class='button-container'>
+						{!result.isAdded ? (
+							<Button variant='success' onClick={handleClick}>
+								Add
+							</Button>
+						) : (
+							null
+						)}
+					</Col>
+				</Row>
 		</div>
 	)
 }

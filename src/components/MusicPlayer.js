@@ -12,11 +12,11 @@ const MusicPlayer = () => {
 				<img src='images/play.svg' alt='' />
 				<img src='images/next.svg' alt='' />
 			</div>
-			<div id='timeline'>
+			{/* <div id='timeline'>
 				<div id='timelineImage'>
 					<img src='images/timeLine.svg' alt='' />
 				</div>
-			</div>
+			</div> */}
 		</div>
 	)
 }

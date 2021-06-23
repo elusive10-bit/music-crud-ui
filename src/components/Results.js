@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import Result from './Result'
+import { Container, Row, Col, Form } from 'react-bootstrap'
 
 const Results = ({results, setResults, currentPlaylist, setPlaylist}) => {
 	const [searchItem, setSearchItem] = useState('Vocaloid')
@@ -15,30 +16,33 @@ const Results = ({results, setResults, currentPlaylist, setPlaylist}) => {
 	return (
 		<div className='results'>
 			<h2>Results</h2>
-			<form id='search' onSubmit={handleSubmit}>
-				<img src='images/search.svg' alt='' />
-				<input
-					type='text'
+			<Form id='search' onSubmit={handleSubmit}>
+				<Form.Control type='text'
 					placeholder='Search'
 					onChange={handleChange}
-					value={searchItem}
-				/>
-			</form>
+					value={searchItem}>
 
-			<div className='results-container'>
+				</Form.Control>
+			</Form>
+
+			<Container className='results-container'>
+				<Row>
 				{results.map((result) => {
 					return (
-						<Result
-							key={result.id}
-							setPlaylist={setPlaylist}
-							currentPlaylist={currentPlaylist}
-							result={result}
-							results={results}
-							setResults={setResults}
-						/>
+						<Col md={6} sm={6} lg={4} xl={3}>
+							<Result
+								key={result.id}
+								setPlaylist={setPlaylist}
+								currentPlaylist={currentPlaylist}
+								result={result}
+								results={results}
+								setResults={setResults}
+							/>
+						</Col>
 					)
 				})}
-			</div>
+				</Row>
+			</Container>
 		</div>
 	)
 }

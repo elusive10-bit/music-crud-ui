@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {Button, Row, Col} from 'react-bootstrap'
 const PlaylistItem = ({
 	playlistItem,
 	setPlaylist,
@@ -24,10 +24,14 @@ const PlaylistItem = ({
 	}
 
 	return (
-		<li>
+		<Row className='playlist-item'>
+			<Col xl={8}>
 			{playlistItem.name}
-			<button onClick={handleClick}>Remove</button>
-		</li>
+			</Col>
+			<Col xl={4}>
+			<Button variant='danger' onClick={handleClick}>Remove</Button>
+			</Col>
+		</Row>
 	)
 }
 

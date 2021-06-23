@@ -1,22 +1,45 @@
 import Nav from './components/Nav'
-import Main from './components/Main'
+import Side from './components/Side'
+import Results from './components/Results' 
 import React, {useState} from "react";
+import { Container, Row, Col } from 'react-bootstrap'
 
 const App = (props) => {
 	const [playlist, setPlaylist] = useState(props.currentPlaylist)
 	const [results, setResults] = useState(props.results)
 	return (
-    <div className="container">
-				<Nav/>
-				<Main 
-				currentPlaylist={playlist}
-				setPlaylist={setPlaylist}  
-				results={results}
-				setResults={setResults}
-				/>
-					
-    </div>
-  );
+		<div>
+		<Container className='container'>
+			<Row>
+				<Nav />
+			</Row>
+
+			<Row gx={5}>
+				<Col className='side' md={4}>
+					<Side
+						currentPlaylist={playlist}
+						setPlaylist={setPlaylist}
+						results={results}
+						setResults={setResults}
+					/>
+				</Col>
+
+				<Col md={8}>
+					<Results 
+						currentPlaylist={playlist}
+						setPlaylist={setPlaylist}
+						results={results}
+						setResults={setResults}
+					/>
+				</Col>
+				
+
+			</Row>
+		</Container>
+
+
+		</div>
+	)
 }
 
 export default App;
