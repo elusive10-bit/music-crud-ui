@@ -39,7 +39,7 @@ const Result = ({
 	)
 
 	return (
-		<Col  md={6} sm={6} lg={4} xl={3}>
+		<Col  xs={5} md={6} sm={6} lg={4} xl={3}>
 			<div className={`card ${cardState}`}>
 				{/* <div className='card-image'>
 					<img src='images/playThumbnail.svg' />

@@ -27,6 +27,7 @@ h3 {
 .side {
 	background-color:			#3eb265;
 	color: #fff;
+	/* display: none; */
 }
 
 .result-added {
@@ -61,9 +62,8 @@ ul {
 
 .side, .results {
 	padding: 20px;
-	height: 600px;
 	min-height: 600px;
-	overflow: auto;
+
 }
 
 .results-container {
@@ -85,6 +85,7 @@ ul {
 	flex-flow: row wrap;
 	justify-content: space-between;
 	margin-bottom: 10px;
+	margin-right: 10px;
 	border-radius: 5px;
 	box-shadow: 2px 2px 5px 1px #317c4a;;
 	font-size: 1.1rem;
@@ -96,6 +97,10 @@ ul {
 
 .main-container {
 	box-shadow: 2px 3px 3px 1px #0005;
+}
+
+.playlist-count {
+	display: block;
 }
 
 @keyframes background-new {
@@ -160,5 +165,28 @@ ul {
 
 	to {
 		transform: rotate(360deg)
+	}
+}
+
+@media(min-width: 320px) {
+
+	.side {
+		/* display: none; */
+		height: 300px;
+		min-height: 200px;
+		overflow: auto;
+	}
+
+	.playlist-item {
+		/* padding: 20px; */
+	}
+		
+}
+
+@media(min-width: 768px) {
+	.side, .results {
+		display: block;
+		overflow: auto;
+		height: auto;
 	}
 }

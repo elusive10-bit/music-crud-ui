@@ -29,14 +29,14 @@ const PlaylistItem = ({
 
 	return (
 		<>
-		<Row className='playlist-item'>
-			<Col xl={8}>
+		<Col xs={3} sm={3} md={12} className='playlist-item'>
+			<Col xs={12} md={8}>
 			{playlistItem.name}
 			</Col>
-			<Col xl={4}>
+			<Col xs='auto' md='auto'>
 			<Button variant='danger' onClick={handleClick}>Remove</Button>
 			</Col>
-		</Row>
+		</Col>
 		</>
 	)
 }
