@@ -1,5 +1,4 @@
 import React from 'react'
-import MusicPlayer from './MusicPlayer'
 import Playlist from './Playlist'
 
 const Side = ({currentPlaylist, setPlaylist, results, setResults}) => {

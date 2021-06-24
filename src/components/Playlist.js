@@ -1,6 +1,7 @@
 import React from 'react'
 import PlaylistItem from './PlaylistItem'
 import { sort } from 'fast-sort'
+import { Col, Container, Row } from 'react-bootstrap'
 const Playlist = ({currentPlaylist, setPlaylist, results, setResults}) => {
 	const sortedPlaylist = sort(currentPlaylist).desc(playlist => playlist.date)
 
@@ -10,8 +11,8 @@ const Playlist = ({currentPlaylist, setPlaylist, results, setResults}) => {
 		<>
 			<div className='playlist'>
 				<h2>Current Playlist</h2>
-				<div class='container'>
-					<div class='row' >
+				<Container>
+				<Row>
 					{sortedPlaylist.length > 0 
 						? sortedPlaylist.map((playlistItem) => (
 							<PlaylistItem
@@ -23,12 +24,12 @@ const Playlist = ({currentPlaylist, setPlaylist, results, setResults}) => {
 							setResults={setResults}
 							/>
 							))
-						: (<h4>Nothing added to playlist</h4>)
+						: (<Col><h4>Nothing added to playlist</h4></Col>)
 					}
-						
-					</div>
+				</Row>
 
-				</div>
+				</Container>
+					
 			</div>
 		</>
 	)

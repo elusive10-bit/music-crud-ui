@@ -1,6 +1,5 @@
 import React from 'react'
-import {Button, Row, Col} from 'react-bootstrap'
-import {ToastContainer, toast} from 'react-toastify'
+import {Button, Col} from 'react-bootstrap'
 
 
 const PlaylistItem = ({
@@ -23,8 +22,6 @@ const PlaylistItem = ({
 		const itemToRemove = currentPlaylist.find(
 			(item) => item.id === playlistItem.id
 		)
-
-		toast.info(`${itemToRemove.name} was removed on Playlist`)
 		setPlaylist(currentPlaylist.filter((item) => item.id !== itemToRemove.id))
 	}
 

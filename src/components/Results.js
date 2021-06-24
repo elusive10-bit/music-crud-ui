@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import Result from './Result'
-import {Container, Row, Col, Form} from 'react-bootstrap'
+import {Container, Row, Form} from 'react-bootstrap'
 
 const Results = ({results, setResults, currentPlaylist, setPlaylist}) => {
 	const [searchItem, setSearchItem] = useState('Vocaloid')

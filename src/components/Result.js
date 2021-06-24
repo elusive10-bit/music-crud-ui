@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react'
-import { Container, Button, Col, Row } from 'react-bootstrap'
+import React, {useState} from 'react'
+import {  Button, Col, Row } from 'react-bootstrap'
 import { toast } from 'react-toastify'
 
 
@@ -21,11 +21,7 @@ const Result = ({
 			date: new Date()
 		}
 
-		const posts = [
-			{ path: 'b.md', locals: { date: '2015-05-06' } },
-			{ path: 'c.md', locals: { date: '2014-01-09' } },
-			{ path: 'a.md', locals: { date: '2014-01-02' } },
-		];
+
 
 		const resultToUpdate = results.map((item) => {
 			if (item.id === result.id) {
