@@ -103,6 +103,12 @@ h4 {
 	font-weight: 400;
 }
 
+ul {
+	margin: 0;
+	padding: 0;
+	line-height: 3rem;
+}
+
 .form-control {
 	border-radius: 10px;
 }
@@ -142,14 +148,6 @@ h4 {
 	border-radius: 10px;
 }
 
-ul {
-	margin: 0;
-	padding: 0;
-	line-height: 3rem;
-}
-
-
-
 .button-container {
 	display: flex;
 	flex-flow: column wrap;
@@ -161,9 +159,6 @@ ul {
 	padding: 20px;
 	min-height: 700px;
 
-}
-
-.results {
 }
 
 .results-container {
@@ -180,7 +175,6 @@ ul {
 	animation-name: move-user;
 	animation-duration: 1.7s;
 }
-
 
 .playlist-item {
 	margin-bottom: 10px;
@@ -213,7 +207,7 @@ ul {
 	display: block;
 }
 
-
+/* -Mobile  */
 @media(min-width: 320px) {
 
 	.side {
@@ -233,6 +227,7 @@ ul {
 	}
 }
 
+/* -Tablet and up */
 @media(min-width: 768px) {
 	.side, .results {
 		display: block;

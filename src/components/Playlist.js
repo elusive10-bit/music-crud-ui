@@ -4,8 +4,6 @@ import { sort } from 'fast-sort'
 import { Col, Container, Row } from 'react-bootstrap'
 const Playlist = ({currentPlaylist, setPlaylist, results, setResults}) => {
 	const sortedPlaylist = sort(currentPlaylist).desc(playlist => playlist.date)
-
-
 	
 	return (
 		<>
