@@ -96,6 +96,8 @@ ul {
 	animation-duration: .4s, .4s;
 }
 
+
+
 .main-container {
 	box-shadow: 2px 3px 3px 1px #0005;
 }
@@ -186,7 +188,6 @@ ul {
 	.button-container {
 		margin-top: 10px;
 	}
-		
 }
 
 @media(min-width: 768px) {

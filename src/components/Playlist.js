@@ -6,7 +6,7 @@ const Playlist = ({currentPlaylist, setPlaylist, results, setResults}) => {
 			<div className='playlist'>
 				<h2>Current Playlist</h2>
 				<div class='container'>
-					<div class='row'>
+					<div class='row' >
 					{currentPlaylist.map((playlistItem) => (
 						<PlaylistItem
 							key={playlistItem.id}

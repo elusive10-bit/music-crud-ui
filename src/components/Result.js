@@ -1,6 +1,8 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Container, Button, Col, Row } from 'react-bootstrap'
 import { toast } from 'react-toastify'
+
+
 const Result = ({
 	result,
 	results,
@@ -10,13 +12,25 @@ const Result = ({
 }) => {
 	const [onStart, setOnStart] = useState(true)
 
+	useEffect(() => {
+		// setPlaylist(sortObject(currentPlaylist, 'desc'))
+		console.log(currentPlaylist)
+	}, [currentPlaylist])
+
 	const handleClick = () => {
 		const resultObject = {
 			id: result.id,
 			name: result.name,
 			artist: result.artist,
 			isAdded: !result.isAdded,
+			date: new Date()
 		}
+
+		const posts = [
+			{ path: 'b.md', locals: { date: '2015-05-06' } },
+			{ path: 'c.md', locals: { date: '2014-01-09' } },
+			{ path: 'a.md', locals: { date: '2014-01-02' } },
+		];
 
 		const resultToUpdate = results.map((item) => {
 			if (item.id === result.id) {
@@ -27,6 +41,9 @@ const Result = ({
 
 		toast.success(`${resultObject.name} is added on playlist`)
 		setResults(resultToUpdate)
+
+		const addResult = currentPlaylist.concat(resultObject)
+		console.log("Add Result: ", addResult)
 
 		setPlaylist(currentPlaylist.concat(resultObject))
 		setOnStart(false)
