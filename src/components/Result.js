@@ -12,11 +12,6 @@ const Result = ({
 }) => {
 	const [onStart, setOnStart] = useState(true)
 
-	useEffect(() => {
-		// setPlaylist(sortObject(currentPlaylist, 'desc'))
-		console.log(currentPlaylist)
-	}, [currentPlaylist])
-
 	const handleClick = () => {
 		const resultObject = {
 			id: result.id,
@@ -41,9 +36,6 @@ const Result = ({
 
 		toast.success(`${resultObject.name} is added on playlist`)
 		setResults(resultToUpdate)
-
-		const addResult = currentPlaylist.concat(resultObject)
-		console.log("Add Result: ", addResult)
 
 		setPlaylist(currentPlaylist.concat(resultObject))
 		setOnStart(false)

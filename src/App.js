@@ -4,9 +4,12 @@ import Results from './components/Results'
 import React, {useState} from "react";
 import { Container, Row, Col } from 'react-bootstrap'
 import {ToastContainer, toast} from 'react-toastify'
+const { Map, List } = require('immutable');
+
 const App = (props) => {
 	const [playlist, setPlaylist] = useState(props.currentPlaylist)
 	const [results, setResults] = useState(props.results)
+
 	return (
 		<div>
 		{/* <ToastContainer newestOnTop={true} autoClose={3000} /> */}

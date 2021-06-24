@@ -1,115 +1,8 @@
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
-
-h1 {
-	font-size: 2rem;
-}
-
-h3 {
-	font-size: 1.3rem;
-}
-
-.container {
-	/* border: 1px solid #000; */
-}
-
-.nav {
-	background-color:	#4f9b68;
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: space-between;
-	padding: 10px 20px;
-}
-
-.side {
-	background-color:			#3eb265;
-	color: #fff;
-	/* display: none; */
-}
-
-.result-added {
-	background-color:rgba(121, 121, 121, 0.2);
-	animation-name: set-to-added;
-	animation-duration: 1s;
-}
-
-.result-removed {
-	animation-name: set-to-not-added;
-	animation-duration: 1s;
-}
-
-.card {
-	margin-bottom: 10px;
-	box-shadow: 3px 3px 10px 1px #00000021;
-}
-
-ul {
-	margin: 0;
-	padding: 0;
-	line-height: 3rem;
-}
-
-
-
-.button-container {
-	display: flex;
-	flex-flow: column wrap;
-	align-items: center;
-	margin: 0;
-}
-
-.side, .results {
-	padding: 20px;
-	min-height: 600px;
-
-}
-
-.results-container {
-	margin-top: 10px;
-	padding-top: 10px;
-}
-
-#logo {
-	animation-name: rotate-logo;
-	animation-duration: 1.7s;
-}
-
-
-.playlist-item {
-	margin-bottom: 10px;
-	background-color: #fff;
-	padding: 5px 10px;
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: space-between;
-	margin-bottom: 10px;
-	margin-right: 10px;
-	border-radius: 5px;
-	box-shadow: 2px 2px 5px 1px #317c4a;;
-	font-size: 1.1rem;
-	color: #000;
-	animation-name: background-new, rotateObject;
-	animation-play-state: running;
-	animation-duration: .4s, .4s;
-}
-
-
-
-.main-container {
-	box-shadow: 2px 3px 3px 1px #0005;
-}
-
-.playlist-count {
-	display: block;
-}
-
+/* -Keyframes */
 @keyframes background-new {
 	0% {
-		background-color: rgba(172, 172, 172, 0.2);
-		opacity: .3;
+		background-color: rgba(102, 102, 102, 0.2);
+		opacity: .7;
 	}
 
 	100% {
@@ -117,6 +10,17 @@ ul {
 		opacity: 1;
 	}
 }
+
+@keyframes move-user {
+	0% {
+		opacity: .1;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
 
 @keyframes set-to-added {
 	from {
@@ -147,6 +51,14 @@ ul {
 	25% {
 		transform: rotate(-1deg);
 	}
+
+	35% {
+		transform: rotate(5deg)
+	}
+
+	45% {
+		transform: rotate(-5deg)
+	}
 	
 	50% {
 		transform: rotate(1deg)
@@ -170,6 +82,137 @@ ul {
 		transform: rotate(360deg)
 	}
 }
+
+/* -Defaults */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+h1 {
+	font-size: 2rem;
+}
+
+h3 {
+	font-size: 1.3rem;
+}
+
+h4 {
+	font-size: 1.12rem;
+	font-weight: 400;
+}
+
+.form-control {
+	border-radius: 10px;
+}
+
+.container {
+	/* border: 1px solid #000; */
+}
+
+.nav {
+	background-color:	#4f9b68;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	padding: 10px 20px;
+}
+
+.side {
+	background-color:			#3eb265;
+	color: #fff;
+	/* display: none; */
+}
+
+.result-added {
+	background-color:rgba(121, 121, 121, 0.2);
+	animation-name: set-to-added;
+	animation-duration: .7s;
+}
+
+.result-removed {
+	animation-name: set-to-not-added;
+	animation-duration: .7s;
+}
+
+.card {
+	margin-bottom: 10px;
+	box-shadow: 3px 3px 5px 1px #a55a5a21;
+	border-radius: 10px;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	line-height: 3rem;
+}
+
+
+
+.button-container {
+	display: flex;
+	flex-flow: column wrap;
+	align-items: center;
+	margin: 0;
+}
+
+.side, .results {
+	padding: 20px;
+	min-height: 700px;
+
+}
+
+.results {
+}
+
+.results-container {
+	margin-top: 10px;
+	padding-top: 10px;
+}
+
+#logo {
+	animation-name: rotate-logo;
+	animation-duration: 1.7s;
+}
+
+#user {
+	animation-name: move-user;
+	animation-duration: 1.7s;
+}
+
+
+.playlist-item {
+	margin-bottom: 10px;
+	background-color: #fff;
+	padding: 5px 10px;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	margin-bottom: 10px;
+	margin-right: 10px;
+	border-radius: 10px;
+	box-shadow: 2px 2px 5px 1px #317c4a;
+	font-size: 1.1rem;
+	color: #000;
+	animation-name: background-new, rotateObject;
+	animation-play-state: running;
+	animation-duration: .5s, .5s;
+}
+
+.playlist-item h4{
+	align-self: center;
+}
+
+
+.main-container {
+	box-shadow: 2px 3px 3px 1px rgb(116, 116, 116);
+}
+
+.playlist-count {
+	display: block;
+}
+
 
 @media(min-width: 320px) {
 

@@ -5,6 +5,7 @@ import {Container, Row, Col, Form} from 'react-bootstrap'
 const Results = ({results, setResults, currentPlaylist, setPlaylist}) => {
 	const [searchItem, setSearchItem] = useState('Vocaloid')
 
+
 	const handleChange = (event) => {
 		setSearchItem(event.target.value)
 	}
@@ -22,6 +23,7 @@ const Results = ({results, setResults, currentPlaylist, setPlaylist}) => {
 					placeholder='Search'
 					onChange={handleChange}
 					value={searchItem}
+					disabled
 				></Form.Control>
 			</Form>
 
