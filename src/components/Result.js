@@ -18,6 +18,9 @@ const Result = ({
 			name: result.name,
 			artist: result.artist,
 			isAdded: !result.isAdded,
+			color: result.color,
+			lightFont: result.lightFont,
+			imgSource: result.imgSource,
 			date: new Date()
 		}
 
@@ -49,6 +52,10 @@ const Result = ({
 				{/* <div className='card-image'>
 					<img src='images/playThumbnail.svg' />
 				</div> */}
+					<div className='card-image'>
+						<img src={result.imgSource} alt='' />
+					</div>
+					
 					<Row className='card-body'>
 						<Col xs={12} sm={8} md={12} lg={12} >
 							<h3>{result.name}</h3>

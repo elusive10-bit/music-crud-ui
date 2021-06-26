@@ -9,7 +9,7 @@ const Playlist = ({currentPlaylist, setPlaylist, results, setResults}) => {
 		<>
 			<div className='playlist'>
 				<h2>Current Playlist</h2>
-				<Container>
+				<Container className='playlist-container'>
 				<Row>
 					{sortedPlaylist.length > 0 
 						? sortedPlaylist.map((playlistItem) => (
@@ -22,7 +22,7 @@ const Playlist = ({currentPlaylist, setPlaylist, results, setResults}) => {
 							setResults={setResults}
 							/>
 							))
-						: (<Col><h4>Nothing added to playlist</h4></Col>)
+						: (<Col><h4 className='no-result'> (^__^) Nothing added to playlist</h4></Col>)
 					}
 				</Row>
 

@@ -6,7 +6,7 @@
 	}
 
 	100% {
-		background-color: #fff;
+		/* background-color: #fff; */
 		opacity: 1;
 	}
 }
@@ -25,10 +25,12 @@
 @keyframes set-to-added {
 	from {
 		background-color: #fff;
+		opacity: 1;
 	}
 
 	to {
-		background-color:rgba(121, 121, 121, 0.2);
+		background-color:rgba(39, 39, 39, 0.2);
+		opacity: .9;
 	}
 }
 
@@ -83,6 +85,16 @@
 	}
 }
 
+@keyframes show-no-results {
+	from {
+		opacity: .1;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
 /* -Defaults */
 * {
 	margin: 0;
@@ -132,20 +144,29 @@ ul {
 }
 
 .result-added {
-	background-color:rgba(121, 121, 121, 0.2);
+	background-color:rgba(39, 39, 39, 0.2);
 	animation-name: set-to-added;
-	animation-duration: .7s;
+	animation-duration: .9s;
+	opacity: .9;
+	color: rgb(58, 58, 58);
 }
 
 .result-removed {
 	animation-name: set-to-not-added;
-	animation-duration: .7s;
+	animation-duration: .9s;
+	opacity: 1;
 }
 
 .card {
-	margin-bottom: 10px;
-	box-shadow: 3px 3px 5px 1px #a55a5a21;
+	margin-bottom: 20px;
+	box-shadow: 2px 3px 3px 1px #bdbcbc;
 	border-radius: 10px;
+	border: none;
+}
+
+.no-result {
+	animation-name: show-no-results;
+	animation-duration: 1s;
 }
 
 .button-container {
@@ -166,6 +187,10 @@ ul {
 	padding-top: 10px;
 }
 
+.playlist-container {
+	margin-top: 20px;
+}
+
 #logo {
 	animation-name: rotate-logo;
 	animation-duration: 1.7s;
@@ -177,25 +202,32 @@ ul {
 }
 
 .playlist-item {
-	margin-bottom: 10px;
 	background-color: #fff;
 	padding: 5px 10px;
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-between;
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 	margin-right: 10px;
 	border-radius: 10px;
 	box-shadow: 2px 2px 5px 1px #317c4a;
+	/* border: 2px solid rgb(255, 255, 255); */
 	font-size: 1.1rem;
 	color: #000;
 	animation-name: background-new, rotateObject;
 	animation-play-state: running;
 	animation-duration: .5s, .5s;
+	align-items: center;
+}
+
+.playlist-item img {
+	border-radius: 5px;
+	width: 65px;
 }
 
 .playlist-item h4{
-	align-self: center;
+	/* align-self: center; */
+	/* border: 1px solid #000; */
 }
 
 
@@ -206,6 +238,14 @@ ul {
 .playlist-count {
 	display: block;
 }
+
+.card-image img {
+	width: 100%;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+
 
 /* -Mobile  */
 @media(min-width: 320px) {

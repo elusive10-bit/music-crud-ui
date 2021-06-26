@@ -25,15 +25,19 @@ const PlaylistItem = ({
 		setPlaylist(currentPlaylist.filter((item) => item.id !== itemToRemove.id))
 	}
 
+
 	return (
 		<>
 		<Col xs={5} sm={3} md={12} className='playlist-item'>
-			<Col xs={12} md={6}>
+			<Col xs={12} md={4}>
 			<h4>
 			{playlistItem.name}
-				
 			</h4>
 			</Col>
+			<Col sm={4} lg={4}>
+				<img src={playlistItem.imgSource} alt=''/>
+			</Col>
+
 			<Col xs='auto' md='auto' className='button-container'>
 			<Button variant='danger' onClick={handleClick}>Remove</Button>
 			</Col>
