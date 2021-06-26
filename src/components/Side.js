@@ -1,7 +1,7 @@
 import React from 'react'
 import Playlist from './Playlist'
 
-const Side = ({currentPlaylist, setPlaylist, results, setResults}) => {
+const Side = ({currentPlaylist, setPlaylist, results, setResults, onStart}) => {
 	return (
 		<>
 			<Playlist
@@ -9,6 +9,7 @@ const Side = ({currentPlaylist, setPlaylist, results, setResults}) => {
 				setPlaylist={setPlaylist}
 				results={results}
 				setResults={setResults}
+				onStart={onStart}
 			/>
 		</>
 	)

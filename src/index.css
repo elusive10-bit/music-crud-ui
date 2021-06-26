@@ -2,7 +2,7 @@
 @keyframes background-new {
 	0% {
 		background-color: rgba(102, 102, 102, 0.2);
-		opacity: .7;
+		opacity: 0.7;
 	}
 
 	100% {
@@ -13,14 +13,13 @@
 
 @keyframes move-user {
 	0% {
-		opacity: .1;
+		opacity: 0.1;
 	}
 
 	100% {
 		opacity: 1;
 	}
 }
-
 
 @keyframes set-to-added {
 	from {
@@ -29,16 +28,16 @@
 	}
 
 	to {
-		background-color:rgba(39, 39, 39, 0.2);
-		opacity: .9;
+		background-color: rgba(39, 39, 39, 0.2);
+		opacity: 0.9;
 	}
 }
 
 @keyframes set-to-not-added {
 	from {
-		background-color:rgba(121, 121, 121, 0.2);
+		background-color: rgba(121, 121, 121, 0.2);
 	}
-	
+
 	to {
 		background-color: #fff;
 	}
@@ -49,45 +48,44 @@
 		transform: rotate(1deg);
 	}
 
-	
 	25% {
 		transform: rotate(-1deg);
 	}
 
 	35% {
-		transform: rotate(5deg)
+		transform: rotate(5deg);
 	}
 
 	45% {
-		transform: rotate(-5deg)
+		transform: rotate(-5deg);
 	}
-	
+
 	50% {
-		transform: rotate(1deg)
+		transform: rotate(1deg);
 	}
-	
+
 	75% {
 		transform: rotate(-1deg);
 	}
-	
-	100% { 
+
+	100% {
 		tranform: rotate(0deg);
 	}
 }
 
 @keyframes rotate-logo {
 	from {
-		transform: rotate(270deg)
+		transform: rotate(270deg);
 	}
 
 	to {
-		transform: rotate(360deg)
+		transform: rotate(360deg);
 	}
 }
 
 @keyframes show-no-results {
 	from {
-		opacity: .1;
+		opacity: 0.1;
 	}
 
 	to {
@@ -125,12 +123,8 @@ ul {
 	border-radius: 10px;
 }
 
-.container {
-	/* border: 1px solid #000; */
-}
-
 .nav {
-	background-color:	#4f9b68;
+	background-color: #4f9b68;
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-between;
@@ -138,23 +132,29 @@ ul {
 }
 
 .side {
-	background-color:			#3eb265;
+	background-color: #3eb265;
 	color: #fff;
 	/* display: none; */
 }
 
 .result-added {
-	background-color:rgba(39, 39, 39, 0.2);
-	animation-name: set-to-added;
-	animation-duration: .9s;
-	opacity: .9;
+	background-color: rgba(39, 39, 39, 0.2);
+	opacity: 0.9;
 	color: rgb(58, 58, 58);
 }
 
+.add-animate {
+	animation-name: set-to-added;
+	animation-duration: 0.9s;
+}
+
 .result-removed {
-	animation-name: set-to-not-added;
-	animation-duration: .9s;
 	opacity: 1;
+}
+
+.remove-animate {
+	animation-name: set-to-not-added;
+	animation-duration: 0.9s;
 }
 
 .card {
@@ -176,10 +176,10 @@ ul {
 	margin: 0;
 }
 
-.side, .results {
+.side,
+.results {
 	padding: 20px;
 	min-height: 700px;
-
 }
 
 .results-container {
@@ -214,10 +214,13 @@ ul {
 	/* border: 2px solid rgb(255, 255, 255); */
 	font-size: 1.1rem;
 	color: #000;
+	align-items: center;
+}
+
+.playlist-item-animate {
 	animation-name: background-new, rotateObject;
 	animation-play-state: running;
-	animation-duration: .5s, .5s;
-	align-items: center;
+	animation-duration: 0.5s, 0.5s;
 }
 
 .playlist-item img {
@@ -239,11 +242,8 @@ ul {
 	border-top-right-radius: 10px;
 }
 
-
-
 /* -Mobile  */
-@media(min-width: 320px) {
-
+@media (min-width: 320px) {
 	.side {
 		/* display: none; */
 		height: 300px;
@@ -262,8 +262,9 @@ ul {
 }
 
 /* -Tablet and up */
-@media(min-width: 768px) {
-	.side, .results {
+@media (min-width: 768px) {
+	.side,
+	.results {
 		display: block;
 		overflow: auto;
 		height: auto;

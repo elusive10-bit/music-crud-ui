@@ -1,45 +1,48 @@
 {
-  "name": "music-player",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.12.0",
-    "@testing-library/react": "^11.2.6",
-    "@testing-library/user-event": "^12.8.3",
-    "array-sort": "^1.0.0",
-    "bootstrap": "^5.0.2",
-    "fast-sort": "^3.0.2",
-    "immutable": "^4.0.0-rc.12",
-    "react": "^17.0.2",
-    "react-bootstrap": "^1.6.1",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "react-toastify": "^7.0.4",
-    "sort-object": "^3.0.3",
-    "web-vitals": "^1.1.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+	"name": "music-player",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"@testing-library/jest-dom": "^5.12.0",
+		"@testing-library/react": "^11.2.6",
+		"@testing-library/user-event": "^12.8.3",
+		"array-sort": "^1.0.0",
+		"axios": "^0.21.1",
+		"bootstrap": "^5.0.2",
+		"fast-sort": "^3.0.2",
+		"immutable": "^4.0.0-rc.12",
+		"json-server": "^0.16.3",
+		"react": "^17.0.2",
+		"react-bootstrap": "^1.6.1",
+		"react-dom": "^17.0.2",
+		"react-scripts": "4.0.3",
+		"react-toastify": "^7.0.4",
+		"sort-object": "^3.0.3",
+		"web-vitals": "^1.1.1"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject",
+		"server": "json-server -p3001 --watch db.json"
+	},
+	"eslintConfig": {
+		"extends": [
+			"react-app",
+			"react-app/jest"
+		]
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	}
 }
