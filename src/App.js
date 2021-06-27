@@ -1,12 +1,28 @@
 import Nav from './components/Nav'
 import Side from './components/Side'
 import Results from './components/Results'
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {Container, Row, Col} from 'react-bootstrap'
+import axios from 'axios'
 
-const App = (props) => {
-	const [playlist, setPlaylist] = useState(props.currentPlaylist)
-	const [results, setResults] = useState(props.results)
+const App = () => {
+	const [playlist, setPlaylist] = useState([])
+	const [results, setResults] = useState([])
+
+	useEffect(() => {
+		console.log('Playlist: ', playlist)
+		console.log('Results: ', results)
+	}, [playlist, results])
+
+	useEffect(() => {
+		axios.get('http://localhost:3001/results').then((response) => {
+			setResults(response.data)
+		})
+
+		axios.get('http://localhost:3001/current-playlist').then((response) => {
+			setPlaylist(response.data)
+		})
+	}, [])
 
 	return (
 		<div>

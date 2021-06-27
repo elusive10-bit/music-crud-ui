@@ -28,10 +28,6 @@ ul {
 	border-radius: 10px;
 }
 
-.container {
-	/* border: 1px solid #000; */
-}
-
 .nav {
 	background-color: #4f9b68;
 	display: flex;
@@ -52,8 +48,18 @@ ul {
 	color: rgb(58, 58, 58);
 }
 
+.add-animate {
+	animation-name: set-to-added;
+	animation-duration: 0.9s;
+}
+
 .result-removed {
 	opacity: 1;
+}
+
+.remove-animate {
+	animation-name: set-to-not-added;
+	animation-duration: 0.9s;
 }
 
 .card {

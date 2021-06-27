@@ -1,4 +1,6 @@
-import React from 'react'
+import axios from 'axios'
+import {update} from 'immutable'
+import React, {useState} from 'react'
 import {Button, Col} from 'react-bootstrap'
 
 const PlaylistItem = ({
@@ -7,6 +9,7 @@ const PlaylistItem = ({
 	currentPlaylist,
 	results,
 	setResults,
+	onStart,
 }) => {
 	const handleClick = () => {
 		const updatedResults = results.map((item) => {
@@ -18,12 +21,12 @@ const PlaylistItem = ({
 
 		setResults(updatedResults)
 
-		const itemToRemove = currentPlaylist.find(
+		const itemToModify = currentPlaylist.find(
 			(item) => item.id === playlistItem.id
 		)
-		setPlaylist(currentPlaylist.filter((item) => item.id !== itemToRemove.id))
-	}
+		setPlaylist(currentPlaylist.filter((item) => item.id !== itemToModify.id))
 
+<<<<<<< HEAD
 	return (
 		<>
 			<Col xs={5} sm={3} md={12} className='playlist-item'>
@@ -31,6 +34,38 @@ const PlaylistItem = ({
 					<h4>{playlistItem.name}</h4>
 				</Col>
 				<Col sm={4} md={5} lg={4}>
+=======
+		axios
+			.delete(`http://localhost:3001/current-playlist/${itemToModify.id}`)
+			.then((response) => {
+				console.log(response.data)
+			})
+
+		const updateItem = {
+			...itemToModify,
+			isAdded: false,
+		}
+
+		axios
+			.put(`http://localhost:3001/results/${itemToModify.id}`, updateItem)
+			.then((response) => {
+				console.log(response.data)
+			})
+	}
+
+	return (
+		<>
+			<Col
+				xs={5}
+				sm={3}
+				md={12}
+				className={`playlist-item ${onStart ? '' : 'playlist-item-animate'}`}
+			>
+				<Col xs={12} md={4}>
+					<h4>{playlistItem.name}</h4>
+				</Col>
+				<Col sm={4} lg={4}>
+>>>>>>> sixth-version
 					<img src={playlistItem.imgSource} alt='' />
 				</Col>
 

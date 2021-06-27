@@ -1,0 +1,86 @@
+{
+  "current-playlist": [
+    {
+      "id": 7,
+      "name": "Magenta",
+      "artist": "Vocaloid",
+      "isAdded": true,
+      "color": "#7a7a7aff",
+      "lightFont": false,
+      "imgSource": "images/icon7.svg",
+      "date": "2021-06-26T11:15:30.233Z"
+    }
+  ],
+  "results": [
+    {
+      "id": 1,
+      "name": "Gallows Bell",
+      "artist": "Vocaloid",
+      "isAdded": false,
+      "color": "#683025ff",
+      "lightFont": true,
+      "imgSource": "images/icon.svg",
+      "date": "2021-06-26T11:15:08.848Z"
+    },
+    {
+      "id": 2,
+      "name": "Glow",
+      "artist": "Vocaloid",
+      "isAdded": false,
+      "color": "#855ec6ff",
+      "lightFont": true,
+      "imgSource": "images/icon2.svg",
+      "date": "2021-06-26T11:15:12.345Z"
+    },
+    {
+      "id": 3,
+      "name": "Hysteria",
+      "artist": "Vocaloid",
+      "isAdded": false,
+      "color": "#5ec3c6ff",
+      "lightFont": true,
+      "imgSource": "images/icon3.svg",
+      "date": "2021-06-26T11:15:15.488Z"
+    },
+    {
+      "id": 4,
+      "name": "Mirai e",
+      "artist": "Unknown",
+      "isAdded": false,
+      "color": "#b67855ff",
+      "lightFont": true,
+      "imgSource": "images/icon4.svg",
+      "date": "2021-06-26T11:15:19.456Z"
+    },
+    {
+      "id": 5,
+      "name": "Crossroads",
+      "artist": "Vocaloid",
+      "isAdded": false,
+      "color": "#b65599ff",
+      "lightFont": false,
+      "imgSource": "images/icon5.svg",
+      "date": "2021-06-26T11:15:23.128Z"
+    },
+    {
+      "id": 6,
+      "name": "Now or Never",
+      "artist": "Vocaloid",
+      "isAdded": false,
+      "color": "#5ca7a9ff",
+      "lightFont": false,
+      "imgSource": "images/icon6.svg",
+      "date": "2021-06-26T11:15:26.457Z"
+    },
+    {
+      "id": 7,
+      "name": "Magenta",
+      "artist": "Vocaloid",
+      "isAdded": true,
+      "color": "#7a7a7aff",
+      "lightFont": false,
+      "imgSource": "images/icon7.svg",
+      "date": "2021-06-26T11:13:46.361Z"
+    }
+  ]
+}
