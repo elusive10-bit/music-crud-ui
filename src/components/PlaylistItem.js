@@ -1,8 +1,8 @@
 import axios from 'axios'
-import {update} from 'immutable'
-import React, {useState} from 'react'
+import React from 'react'
 import {Button, Col} from 'react-bootstrap'
-
+import resultsApi from '../services/results'
+import playlistApi from '../services/playlist'
 const PlaylistItem = ({
 	playlistItem,
 	setPlaylist,
@@ -11,7 +11,7 @@ const PlaylistItem = ({
 	setResults,
 	onStart,
 }) => {
-	const handleClick = () => {
+	const updateResults = (itemToModify) => {
 		const updatedResults = results.map((item) => {
 			if (item.id === playlistItem.id) {
 				return {...item, isAdded: !item.isAdded}
@@ -21,51 +21,43 @@ const PlaylistItem = ({
 
 		setResults(updatedResults)
 
+		const updateItem = {
+			...itemToModify,
+			isAdded: false,
+		}
+		resultsApi.update(itemToModify.id, updateItem).then((response) => {
+			console.log(response.data)
+		})
+	}
+
+	const deletePlaylistItem = (id) => {
+		playlistApi
+			.deleteItem(id)
+			.then((response) => {
+				console.log(response.data)
+			})
+			.catch((error) => console.log(error.message))
+	}
+
+	const handleClick = () => {
 		const itemToModify = currentPlaylist.find(
 			(item) => item.id === playlistItem.id
 		)
+
+		updateResults(itemToModify)
+
 		setPlaylist(currentPlaylist.filter((item) => item.id !== itemToModify.id))
 
-<<<<<<< HEAD
+		deletePlaylistItem(itemToModify.id)
+	}
+
 	return (
 		<>
 			<Col xs={5} sm={3} md={12} className='playlist-item'>
 				<Col xs={12} md={4}>
 					<h4>{playlistItem.name}</h4>
 				</Col>
-				<Col sm={4} md={5} lg={4}>
-=======
-		axios
-			.delete(`http://localhost:3001/current-playlist/${itemToModify.id}`)
-			.then((response) => {
-				console.log(response.data)
-			})
-
-		const updateItem = {
-			...itemToModify,
-			isAdded: false,
-		}
-
-		axios
-			.put(`http://localhost:3001/results/${itemToModify.id}`, updateItem)
-			.then((response) => {
-				console.log(response.data)
-			})
-	}
-
-	return (
-		<>
-			<Col
-				xs={5}
-				sm={3}
-				md={12}
-				className={`playlist-item ${onStart ? '' : 'playlist-item-animate'}`}
-			>
-				<Col xs={12} md={4}>
-					<h4>{playlistItem.name}</h4>
-				</Col>
 				<Col sm={4} lg={4}>
->>>>>>> sixth-version
 					<img src={playlistItem.imgSource} alt='' />
 				</Col>
 

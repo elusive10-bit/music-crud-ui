@@ -1,14 +1,14 @@
 {
   "current-playlist": [
     {
-      "id": 7,
-      "name": "Magenta",
+      "id": 1,
+      "name": "Gallows Bell",
       "artist": "Vocaloid",
       "isAdded": true,
-      "color": "#7a7a7aff",
-      "lightFont": false,
-      "imgSource": "images/icon7.svg",
-      "date": "2021-06-26T11:15:30.233Z"
+      "color": "#683025ff",
+      "lightFont": true,
+      "imgSource": "images/icon.svg",
+      "date": "2021-06-27T02:07:39.382Z"
     }
   ],
   "results": [
@@ -16,11 +16,11 @@
       "id": 1,
       "name": "Gallows Bell",
       "artist": "Vocaloid",
-      "isAdded": false,
+      "isAdded": true,
       "color": "#683025ff",
       "lightFont": true,
       "imgSource": "images/icon.svg",
-      "date": "2021-06-26T11:15:08.848Z"
+      "date": "2021-06-27T02:06:13.725Z"
     },
     {
       "id": 2,
@@ -30,7 +30,7 @@
       "color": "#855ec6ff",
       "lightFont": true,
       "imgSource": "images/icon2.svg",
-      "date": "2021-06-26T11:15:12.345Z"
+      "date": "2021-06-27T02:06:56.893Z"
     },
     {
       "id": 3,
@@ -40,7 +40,7 @@
       "color": "#5ec3c6ff",
       "lightFont": true,
       "imgSource": "images/icon3.svg",
-      "date": "2021-06-26T11:15:15.488Z"
+      "date": "2021-06-27T02:07:05.277Z"
     },
     {
       "id": 4,
@@ -50,7 +50,7 @@
       "color": "#b67855ff",
       "lightFont": true,
       "imgSource": "images/icon4.svg",
-      "date": "2021-06-26T11:15:19.456Z"
+      "date": "2021-06-27T02:07:05.917Z"
     },
     {
       "id": 5,
@@ -60,7 +60,7 @@
       "color": "#b65599ff",
       "lightFont": false,
       "imgSource": "images/icon5.svg",
-      "date": "2021-06-26T11:15:23.128Z"
+      "date": "2021-06-27T02:07:07.413Z"
     },
     {
       "id": 6,
@@ -70,17 +70,17 @@
       "color": "#5ca7a9ff",
       "lightFont": false,
       "imgSource": "images/icon6.svg",
-      "date": "2021-06-26T11:15:26.457Z"
+      "date": "2021-06-27T02:07:06.981Z"
     },
     {
       "id": 7,
       "name": "Magenta",
       "artist": "Vocaloid",
-      "isAdded": true,
+      "isAdded": false,
       "color": "#7a7a7aff",
       "lightFont": false,
       "imgSource": "images/icon7.svg",
-      "date": "2021-06-26T11:13:46.361Z"
+      "date": "2021-06-27T02:07:06.398Z"
     }
   ]
 }

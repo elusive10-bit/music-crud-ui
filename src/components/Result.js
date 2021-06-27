@@ -1,7 +1,8 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {Button, Col, Row} from 'react-bootstrap'
-import {toast} from 'react-toastify'
-
+import axios from 'axios'
+import playlistApi from '../services/playlist'
+import resultsApi from '../services/results'
 const Result = ({
 	result,
 	results,
@@ -9,9 +10,26 @@ const Result = ({
 	currentPlaylist,
 	setPlaylist,
 }) => {
-	const [onStart, setOnStart] = useState(true)
+	const updateResults = () => {
+		const resultToUpdate = results.map((item) => {
+			if (item.id === result.id) {
+				return {...item, isAdded: !result.isAdded}
+			}
+			return item
+		})
+		setResults(resultToUpdate)
 
-	const handleClick = () => {
+		const updateResult = {
+			...result,
+			isAdded: !result.isAdded,
+		}
+
+		resultsApi.update(result.id, updateResult).then((response) => {
+			console.log(response.data)
+		})
+	}
+
+	const addToPlaylist = () => {
 		const resultObject = {
 			id: result.id,
 			name: result.name,
@@ -22,26 +40,19 @@ const Result = ({
 			imgSource: result.imgSource,
 			date: new Date(),
 		}
-
-		const resultToUpdate = results.map((item) => {
-			if (item.id === result.id) {
-				return {...item, isAdded: !result.isAdded}
-			}
-			return item
-		})
-
-		toast.success(`${resultObject.name} is added on playlist`)
-		setResults(resultToUpdate)
-
 		setPlaylist(currentPlaylist.concat(resultObject))
-		setOnStart(false)
+
+		playlistApi.create(resultObject).then((response) => {
+			console.log(response.data)
+		})
 	}
 
-	const cardState = !onStart
-		? result.isAdded
-			? 'result-added'
-			: 'result-removed'
-		: ''
+	const handleClick = () => {
+		updateResults()
+		addToPlaylist()
+	}
+
+	const cardState = result.isAdded ? 'result-added' : 'result-removed'
 
 	return (
 		<Col xs={5} md={6} sm={6} lg={4} xl={3}>

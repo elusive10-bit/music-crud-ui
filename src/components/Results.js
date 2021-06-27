@@ -5,14 +5,9 @@ import {Container, Row, Form} from 'react-bootstrap'
 const Results = ({results, setResults, currentPlaylist, setPlaylist}) => {
 	const [searchItem, setSearchItem] = useState('')
 	const [filteredResults, setFilteredResults] = useState([])
-	useEffect(() => {
-		console.log(results)
-		console.log(filteredResults)
-	}, [results, filteredResults])
 
 	useEffect(() => {
 		const pattern = new RegExp(searchItem, 'i')
-		console.log('Pattern', pattern)
 		setFilteredResults(
 			results.filter((result) => {
 				if (pattern.test(result.name) || pattern.test(result.artist)) {
@@ -42,7 +37,7 @@ const Results = ({results, setResults, currentPlaylist, setPlaylist}) => {
 					placeholder='Search'
 					onChange={handleChange}
 					value={searchItem}
-					autocomplete='off'
+					autoComplete='off'
 				></Form.Control>
 			</Form>
 

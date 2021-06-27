@@ -3,10 +3,6 @@ import ReactDOM from 'react-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './index.css'
 import App from './App'
-import {nanoid} from 'nanoid'
-import 'react-toastify/dist/ReactToastify.css'
-// import { Map } from 'immutable'
-
 // const currentPlaylist = []
 
 // const results = [
