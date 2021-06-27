@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
-import {  Button, Col, Row } from 'react-bootstrap'
-import { toast } from 'react-toastify'
-
+import {Button, Col, Row} from 'react-bootstrap'
+import {toast} from 'react-toastify'
 
 const Result = ({
 	result,
@@ -10,8 +9,6 @@ const Result = ({
 	currentPlaylist,
 	setPlaylist,
 }) => {
-	const [onStart, setOnStart] = useState(true)
-
 	const handleClick = () => {
 		const resultObject = {
 			id: result.id,
@@ -21,10 +18,8 @@ const Result = ({
 			color: result.color,
 			lightFont: result.lightFont,
 			imgSource: result.imgSource,
-			date: new Date()
+			date: new Date(),
 		}
-
-
 
 		const resultToUpdate = results.map((item) => {
 			if (item.id === result.id) {
@@ -37,40 +32,39 @@ const Result = ({
 		setResults(resultToUpdate)
 
 		setPlaylist(currentPlaylist.concat(resultObject))
-		setOnStart(false)
 	}
 
-	const cardState = (
-		!onStart 
-		? (result.isAdded ) ? 'result-added' : 'result-removed'
-		: ''
-	)
+	const cardState = result.added ? 'result-added' : 'result-removed'
 
 	return (
-		<Col  xs={5} md={6} sm={6} lg={4} xl={3}>
+		<Col xs={5} md={6} sm={6} lg={4} xl={3}>
 			<div className={`card ${cardState}`}>
 				{/* <div className='card-image'>
 					<img src='images/playThumbnail.svg' />
 				</div> */}
-					<div className='card-image'>
-						<img src={result.imgSource} alt='' />
-					</div>
-					
-					<Row className='card-body'>
-						<Col xs={12} sm={8} md={12} lg={12} >
-							<h3>{result.name}</h3>
-						</Col>
+				<div className='card-image'>
+					<img src={result.imgSource} alt='' />
+				</div>
 
-						<Col xs='auto' sm='auto' md='auto' lg='auto' className='button-container'>
-							{!result.isAdded ? (
-								<Button variant='success' onClick={handleClick}>
-									Add
-								</Button>
-							) : (
-								null
-							)}
-						</Col>
-					</Row>
+				<Row className='card-body'>
+					<Col xs={12} sm={8} md={12} lg={12}>
+						<h3>{result.name}</h3>
+					</Col>
+
+					<Col
+						xs='auto'
+						sm='auto'
+						md='auto'
+						lg='auto'
+						className='button-container'
+					>
+						{!result.isAdded ? (
+							<Button variant='success' onClick={handleClick}>
+								Add
+							</Button>
+						) : null}
+					</Col>
+				</Row>
 			</div>
 		</Col>
 	)

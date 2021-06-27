@@ -1,10 +1,27 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Result from './Result'
 import {Container, Row, Form} from 'react-bootstrap'
 
 const Results = ({results, setResults, currentPlaylist, setPlaylist}) => {
 	const [searchItem, setSearchItem] = useState('Vocaloid')
+	const [filteredResults, setFilteredResults] = useState([])
+	useEffect(() => {
+		console.log(results)
+		console.log(filteredResults)
+	}, [results, filteredResults])
 
+	useEffect(() => {
+		const pattern = new RegExp(searchItem, 'i')
+		console.log('Pattern', pattern)
+		setFilteredResults(
+			results.filter((result) => {
+				if (pattern.test(result.name) || pattern.test(result.artist)) {
+					return result
+				}
+				return null
+			})
+		)
+	}, [searchItem, results])
 
 	const handleChange = (event) => {
 		setSearchItem(event.target.value)
@@ -12,7 +29,7 @@ const Results = ({results, setResults, currentPlaylist, setPlaylist}) => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault()
-		console.log('Results: ', searchItem)
+		// console.log('Results: ', searchItem)
 	}
 	return (
 		<div className='results'>
@@ -23,13 +40,12 @@ const Results = ({results, setResults, currentPlaylist, setPlaylist}) => {
 					placeholder='Search'
 					onChange={handleChange}
 					value={searchItem}
-					disabled
 				></Form.Control>
 			</Form>
 
 			<Container className='results-container'>
 				<Row>
-					{results.map((result) => {
+					{filteredResults.map((result) => {
 						return (
 							<Result
 								key={result.id}
