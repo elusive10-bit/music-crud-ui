@@ -78,7 +78,7 @@ ul {
 .side,
 .results {
 	padding: 20px;
-	min-height: 700px;
+	min-height: 800px;
 }
 
 .results-container {
@@ -110,7 +110,6 @@ ul {
 	margin-right: 10px;
 	border-radius: 10px;
 	box-shadow: 2px 2px 5px 1px #317c4a;
-	/* border: 2px solid rgb(255, 255, 255); */
 	font-size: 1.1rem;
 	color: #000;
 	align-items: center;

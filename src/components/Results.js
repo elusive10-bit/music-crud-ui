@@ -3,7 +3,7 @@ import Result from './Result'
 import {Container, Row, Form} from 'react-bootstrap'
 
 const Results = ({results, setResults, currentPlaylist, setPlaylist}) => {
-	const [searchItem, setSearchItem] = useState('Vocaloid')
+	const [searchItem, setSearchItem] = useState('')
 	const [filteredResults, setFilteredResults] = useState([])
 	useEffect(() => {
 		console.log(results)
@@ -31,6 +31,8 @@ const Results = ({results, setResults, currentPlaylist, setPlaylist}) => {
 		event.preventDefault()
 		// console.log('Results: ', searchItem)
 	}
+
+	const resultsCounter = filteredResults.length
 	return (
 		<div className='results'>
 			<h2>Results</h2>
@@ -40,23 +42,30 @@ const Results = ({results, setResults, currentPlaylist, setPlaylist}) => {
 					placeholder='Search'
 					onChange={handleChange}
 					value={searchItem}
+					autocomplete='off'
 				></Form.Control>
 			</Form>
 
 			<Container className='results-container'>
 				<Row>
-					{filteredResults.map((result) => {
-						return (
-							<Result
-								key={result.id}
-								setPlaylist={setPlaylist}
-								currentPlaylist={currentPlaylist}
-								result={result}
-								results={results}
-								setResults={setResults}
-							/>
-						)
-					})}
+					<h3>
+						{resultsCounter > 0 ? resultsCounter : 'No'}{' '}
+						{resultsCounter > 1 ? `results` : 'result'} found
+					</h3>
+					{filteredResults.length > 0
+						? filteredResults.map((result) => {
+								return (
+									<Result
+										key={result.id}
+										setPlaylist={setPlaylist}
+										currentPlaylist={currentPlaylist}
+										result={result}
+										results={results}
+										setResults={setResults}
+									/>
+								)
+						  })
+						: ''}
 				</Row>
 			</Container>
 		</div>
