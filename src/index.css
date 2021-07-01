@@ -1,3 +1,18 @@
+/* -- animate */
+@keyframes set-to-added {
+	from {
+		opacity: 1;
+		background-color: #fff;
+		
+	}
+	
+	to {
+		opacity: .8;	
+		background-color: rgb(204, 204, 204);
+	}
+}
+
+
 /* -Defaults */
 * {
 	margin: 0;
@@ -43,14 +58,14 @@ ul {
 }
 
 .result-added {
-	background-color: rgba(39, 39, 39, 0.2);
-	opacity: 0.9;
+	background-color: rgb(204, 204, 204);
+	opacity: 0.8;
 	color: rgb(58, 58, 58);
 }
 
 .add-animate {
 	animation-name: set-to-added;
-	animation-duration: 0.9s;
+	animation-duration: 2s;
 }
 
 .result-removed {
@@ -60,6 +75,7 @@ ul {
 .remove-animate {
 	animation-name: set-to-not-added;
 	animation-duration: 0.9s;
+
 }
 
 .card {

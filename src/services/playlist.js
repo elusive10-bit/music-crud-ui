@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseUrl = 'http://localhost:3001/api/current-playlist'
+const baseUrl = '/api/current-playlist'
 
 const getAll = () => {
 	return axios.get(baseUrl)

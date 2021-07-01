@@ -1,5 +1,5 @@
-import React from 'react'
-import {Button, Col, Row} from 'react-bootstrap'
+import React, { useEffect } from 'react'
+import { Button, Col, Row } from 'react-bootstrap'
 import axios from 'axios'
 import playlistApi from '../services/playlist'
 import resultsApi from '../services/results'
@@ -13,7 +13,10 @@ const Result = ({
 	const updateResults = () => {
 		const resultToUpdate = results.map((item) => {
 			if (item.id === result.id) {
-				return {...item, isAdded: !result.isAdded}
+				return {
+					...item,
+					isAdded: !result.isAdded,
+				}
 			}
 			return item
 		})
@@ -52,7 +55,9 @@ const Result = ({
 		addToPlaylist()
 	}
 
-	const cardState = result.isAdded ? 'result-added' : 'result-removed'
+	const cardState = result.isAdded
+		? 'result-added'
+		: 'result-removed'
 
 	return (
 		<Col xs={5} md={6} sm={6} lg={4} xl={3}>
@@ -74,8 +79,7 @@ const Result = ({
 						sm='auto'
 						md='auto'
 						lg='auto'
-						className='button-container'
-					>
+						className='button-container'>
 						{!result.isAdded ? (
 							<Button variant='success' onClick={handleClick}>
 								Add
