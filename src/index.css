@@ -3,15 +3,13 @@
 	from {
 		opacity: 1;
 		background-color: #fff;
-		
 	}
-	
+
 	to {
-		opacity: .8;	
+		opacity: 0.8;
 		background-color: rgb(204, 204, 204);
 	}
 }
-
 
 /* -Defaults */
 * {
@@ -20,17 +18,27 @@
 	box-sizing: border-box;
 }
 
+body {
+	font-family: 'Open Sans';
+}
+
 h1 {
-	font-size: 2rem;
+	font-size: 1.9rem;
 }
 
 h3 {
-	font-size: 1.3rem;
+	font-size: 1.2rem;
+	font-weight: 600;
 }
 
 h4 {
-	font-size: 1.12rem;
-	font-weight: 400;
+	font-size: 1.2rem;
+	font-weight: 500;
+}
+
+h5 {
+	font-size: 0.9rem;
+	font-weight: 300;
 }
 
 ul {
@@ -51,6 +59,10 @@ ul {
 	padding: 10px 20px;
 }
 
+.nav #app-name {
+	color: #fff;
+}
+
 .side {
 	background-color: #3eb265;
 	color: #fff;
@@ -61,6 +73,7 @@ ul {
 	background-color: rgb(204, 204, 204);
 	opacity: 0.8;
 	color: rgb(58, 58, 58);
+	box-shadow: 1px 1px 2px 1px #999898;
 }
 
 .add-animate {
@@ -70,17 +83,16 @@ ul {
 
 .result-removed {
 	opacity: 1;
+	box-shadow: 2px 3px 3px 0px #bdbdbd;
 }
 
 .remove-animate {
 	animation-name: set-to-not-added;
 	animation-duration: 0.9s;
-
 }
 
 .card {
 	margin-bottom: 20px;
-	box-shadow: 2px 3px 3px 1px #bdbcbc;
 	border-radius: 10px;
 	border: none;
 }
@@ -115,6 +127,9 @@ ul {
 #logo {
 	animation-name: rotate-logo;
 	animation-duration: 1.7s;
+	display: flex;
+	flex-flow: row;
+	color: #fff;
 }
 
 #user {
@@ -128,11 +143,10 @@ ul {
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-between;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	margin-right: 10px;
 	border-radius: 10px;
 	box-shadow: 2px 2px 5px 1px #317c4a;
-	font-size: 1.1rem;
 	color: #000;
 	align-items: center;
 }
@@ -140,6 +154,16 @@ ul {
 .playlist-item img {
 	border-radius: 5px;
 	width: 65px;
+}
+
+.playlist-item h4 {
+	font-size: 1.1rem;
+	font-weight: 600;
+}
+
+.playlist-item h5 {
+	font-size: 1rem;
+	font-weight: 400;
 }
 
 .main-container {

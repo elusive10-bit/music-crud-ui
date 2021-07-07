@@ -55,12 +55,10 @@ const Result = ({
 		addToPlaylist()
 	}
 
-	const cardState = result.isAdded
-		? 'result-added'
-		: 'result-removed'
+	const cardState = result.isAdded ? 'result-added' : 'result-removed'
 
 	return (
-		<Col xs={5} md={6} sm={6} lg={4} xl={3}>
+		<Col xs={12} md={6} sm={6} lg={4} xl={3}>
 			<div className={`card ${cardState}`}>
 				{/* <div className='card-image'>
 					<img src='images/playThumbnail.svg' />
@@ -71,7 +69,12 @@ const Result = ({
 
 				<Row className='card-body'>
 					<Col xs={12} sm={8} md={12} lg={12}>
-						<h3>{result.name}</h3>
+						<Col>
+							<h3>{result.name}</h3>
+						</Col>
+						<Col>
+							<h4>by {result.artist}</h4>
+						</Col>
 					</Col>
 
 					<Col

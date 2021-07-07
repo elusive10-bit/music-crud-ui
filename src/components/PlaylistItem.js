@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React from 'react'
-import {Button, Col} from 'react-bootstrap'
+import { Button, Col } from 'react-bootstrap'
 import resultsApi from '../services/results'
 import playlistApi from '../services/playlist'
 const PlaylistItem = ({
@@ -14,7 +14,7 @@ const PlaylistItem = ({
 	const updateResults = (itemToModify) => {
 		const updatedResults = results.map((item) => {
 			if (item.id === playlistItem.id) {
-				return {...item, isAdded: !item.isAdded}
+				return { ...item, isAdded: !item.isAdded }
 			}
 			return item
 		})
@@ -55,12 +55,17 @@ const PlaylistItem = ({
 		<>
 			<Col xs={5} sm={3} md={12} className='playlist-item'>
 				<Col xs={12} md={4}>
-					<h4>{playlistItem.name}</h4>
+					<Col>
+						<h4>{playlistItem.name}</h4>
+					</Col>
+					<Col>
+						<h5>by {playlistItem.artist}</h5>
+					</Col>
 				</Col>
+
 				<Col sm={4} lg={4}>
 					<img src={playlistItem.imgSource} alt='' />
 				</Col>
-
 				<Col xs='auto' md='auto' className='button-container'>
 					<Button variant='danger' onClick={handleClick}>
 						Remove
