@@ -58,7 +58,7 @@ const Result = ({
 	const cardState = result.isAdded ? 'result-added' : 'result-removed'
 
 	return (
-		<Col xs={12} md={6} sm={6} lg={4} xl={3}>
+		<Col xs={6} md={6} sm={6} lg={4} xl={3}>
 			<div className={`card ${cardState}`}>
 				{/* <div className='card-image'>
 					<img src='images/playThumbnail.svg' />

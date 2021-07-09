@@ -194,6 +194,10 @@ ul {
 		padding-bottom: 10px;
 	}
 
+	.playlist-item {
+		flex: 1 1 40vw;
+	}
+
 	.button-container {
 		margin-top: 10px;
 	}
