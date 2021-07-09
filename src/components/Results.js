@@ -1,8 +1,26 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import Result from './Result'
-import {Container, Row, Form} from 'react-bootstrap'
+import {
+	Container as BootstrapContainer,
+	Row,
+	Form as BootstrapForm,
+} from 'react-bootstrap'
+import styled from 'styled-components'
 
-const Results = ({results, setResults, currentPlaylist, setPlaylist}) => {
+const Container = styled(BootstrapContainer)`
+	padding: 20px;
+	min-height: 800px;
+`
+const ResultsContainer = styled(BootstrapContainer)`
+	margin-top: 10px;
+	padding-top: 10px;
+`
+
+const FormControl = styled(BootstrapForm.Control)`
+	border-radius: 5px;
+`
+
+const Results = ({ results, setResults, currentPlaylist, setPlaylist }) => {
 	const [searchItem, setSearchItem] = useState('')
 	const [filteredResults, setFilteredResults] = useState([])
 
@@ -29,19 +47,18 @@ const Results = ({results, setResults, currentPlaylist, setPlaylist}) => {
 
 	const resultsCounter = filteredResults.length
 	return (
-		<div className='results'>
+		<Container>
 			<h2>Results</h2>
-			<Form id='search' onSubmit={handleSubmit}>
-				<Form.Control
+			<BootstrapForm id='search' onSubmit={handleSubmit}>
+				<FormControl
 					type='text'
 					placeholder='Search'
 					onChange={handleChange}
 					value={searchItem}
-					autoComplete='off'
-				></Form.Control>
-			</Form>
+					autoComplete='off'></FormControl>
+			</BootstrapForm>
 
-			<Container className='results-container'>
+			<ResultsContainer>
 				<Row>
 					<h3>
 						{resultsCounter > 0 ? resultsCounter : 'No'}{' '}
@@ -62,8 +79,8 @@ const Results = ({results, setResults, currentPlaylist, setPlaylist}) => {
 						  })
 						: ''}
 				</Row>
-			</Container>
-		</div>
+			</ResultsContainer>
+		</Container>
 	)
 }
 

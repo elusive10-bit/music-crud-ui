@@ -1,9 +1,10 @@
 import React from 'react'
-import { Container } from 'react-bootstrap'
+import { Container as BootstrapContainer } from 'react-bootstrap'
 import styled from 'styled-components'
 
-const Container = styled.(Container)`
+const Container = styled(BootstrapContainer)`
 	border: 1px solid #000;
+	padding: 10px;
 `
 
 const LoginForm = () => {

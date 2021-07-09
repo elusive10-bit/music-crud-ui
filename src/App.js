@@ -10,7 +10,7 @@ import playlistApi from './services/playlist'
 const App = () => {
 	const [playlist, setPlaylist] = useState([])
 	const [results, setResults] = useState([])
-	const [isLoggedIn, setIsLoggedIn] = useState(false)
+	const [isLoggedIn, setIsLoggedIn] = useState(true)
 
 	useEffect(() => {
 		console.log('Playlist: ', playlist)
@@ -34,14 +34,12 @@ const App = () => {
 			</Row>
 
 			<Row gx={5}>
-				<Col className='side' md={4}>
-					<Side
-						currentPlaylist={playlist}
-						setPlaylist={setPlaylist}
-						results={results}
-						setResults={setResults}
-					/>
-				</Col>
+				<Side
+					currentPlaylist={playlist}
+					setPlaylist={setPlaylist}
+					results={results}
+					setResults={setResults}
+				/>
 
 				<Col md={8}>
 					<Results

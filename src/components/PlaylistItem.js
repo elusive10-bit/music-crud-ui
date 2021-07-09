@@ -3,6 +3,37 @@ import React from 'react'
 import { Button, Col } from 'react-bootstrap'
 import resultsApi from '../services/results'
 import playlistApi from '../services/playlist'
+import styled from 'styled-components'
+
+const PlaylistItemColumn = styled(Col)`
+	background-color: #fff;
+	padding: 10px 10px;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	margin-bottom: 10px;
+	margin-right: 10px;
+	border-radius: 10px;
+	box-shadow: 2px 2px 5px 1px #317c4a;
+	color: #000;
+	align-items: center;
+`
+
+const PlaylistItemName = styled.h4`
+	font-size: 1.1rem;
+	font-weight: 600;
+`
+
+const PlaylistItemArtist = styled.h5`
+	font-size: 1rem;
+	font-weight: 400;
+`
+
+const PlaylistItemImage = styled.img`
+	border-radius: 5px;
+	width: 65px;
+`
+
 const PlaylistItem = ({
 	playlistItem,
 	setPlaylist,
@@ -53,25 +84,25 @@ const PlaylistItem = ({
 
 	return (
 		<>
-			<Col xs={5} sm={3} md={12} className='playlist-item'>
+			<PlaylistItemColumn xs={5} sm={3} md={12}>
 				<Col xs={12} md={4}>
 					<Col>
-						<h4>{playlistItem.name}</h4>
+						<PlaylistItemName>{playlistItem.name}</PlaylistItemName>
 					</Col>
 					<Col>
-						<h5>by {playlistItem.artist}</h5>
+						<PlaylistItemArtist>by {playlistItem.artist}</PlaylistItemArtist>
 					</Col>
 				</Col>
 
 				<Col sm={4} lg={4}>
-					<img src={playlistItem.imgSource} alt='' />
+					<PlaylistItemImage src={playlistItem.imgSource} alt='' />
 				</Col>
 				<Col xs='auto' md='auto' className='button-container'>
 					<Button variant='danger' onClick={handleClick}>
 						Remove
 					</Button>
 				</Col>
-			</Col>
+			</PlaylistItemColumn>
 		</>
 	)
 }

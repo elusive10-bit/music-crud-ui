@@ -1,7 +1,13 @@
 import React from 'react'
 import PlaylistItem from './PlaylistItem'
-import {sort} from 'fast-sort'
-import {Col, Container, Row} from 'react-bootstrap'
+import { sort } from 'fast-sort'
+import { Col, Container as BootstrapContainer, Row } from 'react-bootstrap'
+import styled from 'styled-components'
+
+const PlaylistContainer = styled(BootstrapContainer)`
+	margin-top: 20px;
+`
+
 const Playlist = ({
 	currentPlaylist,
 	setPlaylist,
@@ -15,7 +21,7 @@ const Playlist = ({
 		<>
 			<div className='playlist'>
 				<h2>Current Playlist</h2>
-				<Container className='playlist-container'>
+				<PlaylistContainer>
 					<Row>
 						{sortedPlaylist.length > 0 ? (
 							sortedPlaylist.map((playlistItem) => (
@@ -35,7 +41,7 @@ const Playlist = ({
 							</Col>
 						)}
 					</Row>
-				</Container>
+				</PlaylistContainer>
 			</div>
 		</>
 	)

@@ -1,8 +1,16 @@
 import React, { useEffect } from 'react'
-import { Button, Col, Row } from 'react-bootstrap'
+import { Button, Col, Row, Card as BootstrapCard } from 'react-bootstrap'
 import axios from 'axios'
 import playlistApi from '../services/playlist'
 import resultsApi from '../services/results'
+import styled from 'styled-components'
+
+const Card = styled(BootstrapCard)`
+	margin-bottom: 20px;
+	border-radius: 10px;
+	border: none;
+`
+
 const Result = ({
 	result,
 	results,
@@ -59,7 +67,7 @@ const Result = ({
 
 	return (
 		<Col xs={6} md={6} sm={6} lg={4} xl={3}>
-			<div className={`card ${cardState}`}>
+			<Card className={`${cardState}`}>
 				{/* <div className='card-image'>
 					<img src='images/playThumbnail.svg' />
 				</div> */}
@@ -90,7 +98,7 @@ const Result = ({
 						) : null}
 					</Col>
 				</Row>
-			</div>
+			</Card>
 		</Col>
 	)
 }
