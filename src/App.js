@@ -18,7 +18,12 @@ const AppContainer = styled.div`
 	padding-top: ${(props) => (props.isLoggedIn ? '0px' : '200px')};
 `
 const ResultsColumn = styled(Col)`
-	margin-right: 0;
+	margin-left: 0;
+	background-color: #fff;
+	padding: 20px;
+	@media (max-width: 768px) {
+		margin-top: 10px;
+	}
 `
 
 const App = () => {
@@ -45,7 +50,7 @@ const App = () => {
 
 	const mainContainer = (
 		<Container fluid='xl' className='main-container'>
-			<Row className='row-2' noGutters={true}>
+			<Row className='row-2'>
 				<Nav />
 			</Row>
 

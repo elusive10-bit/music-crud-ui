@@ -21,7 +21,9 @@ const PlaylistItemColumn = styled(Col)`
 	align-items: center;
 `
 
-const RemoveButton = styled(Button)``
+const RemoveButton = styled(Button)`
+	margin-top: 10px;
+`
 
 const PlaylistItemName = styled.h4`
 	font-size: 1rem;
@@ -89,7 +91,7 @@ const PlaylistItem = ({
 
 	return (
 		<>
-			<PlaylistItemColumn xs={5} sm={3} md={12}>
+			<PlaylistItemColumn xs={5} sm={5} md={12}>
 				<Col xs={12} md={4}>
 					<Col>
 						<PlaylistItemName>{playlistItem.name}</PlaylistItemName>

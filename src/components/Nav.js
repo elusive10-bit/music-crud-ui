@@ -8,8 +8,8 @@ const Container = styled.div`
 	justify-content: space-between;
 	padding: 20px 20px;
 	margin-bottom: 10px;
-	border-radius: 10px;
 	margin-top: 10px;
+	border-radius: 8px;
 `
 const Logo = styled.div`
 	animation-name: rotate-logo;

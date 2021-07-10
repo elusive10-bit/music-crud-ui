@@ -11,7 +11,6 @@ const Container = styled(BootstrapContainer)`
 	background-color: #fff;
 	padding: 20px;
 	min-height: 800px;
-	border-radius: 8px;
 	.row {
 		margin: 0;
 	}
@@ -55,7 +54,7 @@ const Results = ({ results, setResults, currentPlaylist, setPlaylist }) => {
 
 	const resultsCounter = filteredResults.length
 	return (
-		<Container noGutter={true}>
+		<>
 			<h2>Results</h2>
 			<BootstrapForm id='search' onSubmit={handleSubmit}>
 				<FormControl
@@ -88,7 +87,7 @@ const Results = ({ results, setResults, currentPlaylist, setPlaylist }) => {
 						: ''}
 				</Row>
 			</ResultsContainer>
-		</Container>
+		</>
 	)
 }
 
