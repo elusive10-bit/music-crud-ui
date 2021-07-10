@@ -1,21 +1,32 @@
 import Nav from './components/Nav'
 import Side from './components/Side'
 import Results from './components/Results'
+import RegisterForm from './components/RegisterForm'
 import LoginForm from './components/LoginForm'
 import React, { useState, useEffect } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import resultsApi from './services/results'
 import playlistApi from './services/playlist'
+import styled from 'styled-components'
+
+const AppContainer = styled.div`
+	display: flex;
+	flex-flow: column wrap;
+
+	padding-top: ${(props) => (props.isLoggedIn ? '0px' : '200px')};
+`
 
 const App = () => {
 	const [playlist, setPlaylist] = useState([])
 	const [results, setResults] = useState([])
 	const [isLoggedIn, setIsLoggedIn] = useState(true)
+	const [isRegistered, setIsRegistered] = useState(false)
 
 	useEffect(() => {
 		console.log('Playlist: ', playlist)
 		console.log('Results: ', results)
-	}, [playlist, results])
+		console.log('IsRegistered', isRegistered)
+	}, [playlist, results, isRegistered])
 
 	useEffect(() => {
 		resultsApi.getAll().then((response) => {
@@ -33,7 +44,7 @@ const App = () => {
 				<Nav />
 			</Row>
 
-			<Row gx={5}>
+			<Row gx={5} noGutters={true}>
 				<Side
 					currentPlaylist={playlist}
 					setPlaylist={setPlaylist}
@@ -41,7 +52,7 @@ const App = () => {
 					setResults={setResults}
 				/>
 
-				<Col md={8}>
+				<Col md={8} noGutters={true}>
 					<Results
 						currentPlaylist={playlist}
 						setPlaylist={setPlaylist}
@@ -54,11 +65,23 @@ const App = () => {
 	)
 
 	return (
-		<div>
+		<AppContainer isLoggedIn={isLoggedIn}>
 			{/* <ToastContainer newestOnTop={true} autoClose={3000} /> */}
 
-			{isLoggedIn ? mainContainer : <LoginForm />}
-		</div>
+			{isLoggedIn ? (
+				mainContainer
+			) : !isRegistered ? (
+				<RegisterForm
+					isRegistered={isRegistered}
+					setIsRegistered={setIsRegistered}
+				/>
+			) : (
+				<LoginForm
+					isRegistered={isRegistered}
+					setIsRegistered={setIsRegistered}
+				/>
+			)}
+		</AppContainer>
 	)
 }
 

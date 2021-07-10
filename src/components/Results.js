@@ -8,8 +8,12 @@ import {
 import styled from 'styled-components'
 
 const Container = styled(BootstrapContainer)`
+	background-color: #fff;
 	padding: 20px;
 	min-height: 800px;
+	.row {
+		margin: 0;
+	}
 `
 const ResultsContainer = styled(BootstrapContainer)`
 	margin-top: 10px;
@@ -18,6 +22,8 @@ const ResultsContainer = styled(BootstrapContainer)`
 
 const FormControl = styled(BootstrapForm.Control)`
 	border-radius: 5px;
+	padding: 10px;
+	font-size: 1.1rem;
 `
 
 const Results = ({ results, setResults, currentPlaylist, setPlaylist }) => {
@@ -47,7 +53,7 @@ const Results = ({ results, setResults, currentPlaylist, setPlaylist }) => {
 
 	const resultsCounter = filteredResults.length
 	return (
-		<Container>
+		<Container noGutter={true}>
 			<h2>Results</h2>
 			<BootstrapForm id='search' onSubmit={handleSubmit}>
 				<FormControl
@@ -59,7 +65,7 @@ const Results = ({ results, setResults, currentPlaylist, setPlaylist }) => {
 			</BootstrapForm>
 
 			<ResultsContainer>
-				<Row>
+				<Row noGutter={true}>
 					<h3>
 						{resultsCounter > 0 ? resultsCounter : 'No'}{' '}
 						{resultsCounter > 1 ? `results` : 'result'} found

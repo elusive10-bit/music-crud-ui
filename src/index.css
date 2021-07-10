@@ -7,6 +7,7 @@
 
 body {
 	font-family: 'Open Sans';
+	background-color: #3cae67f9;
 }
 
 h1 {
@@ -19,7 +20,7 @@ h3 {
 }
 
 h4 {
-	font-size: 1.2rem;
+	font-size: 0.9rem;
 	font-weight: 500;
 }
 
@@ -34,6 +35,10 @@ ul {
 	line-height: 3rem;
 }
 
+.btn {
+	font-size: 0.9rem;
+}
+
 .result-added {
 	background-color: rgb(204, 204, 204);
 	opacity: 0.8;
@@ -46,17 +51,6 @@ ul {
 	box-shadow: 2px 3px 3px 0px #bdbdbd;
 }
 
-.button-container {
-	display: flex;
-	flex-flow: column wrap;
-	align-items: center;
-	margin: 0;
-}
-
-.main-container {
-	box-shadow: 2px 3px 3px 1px rgb(116, 116, 116);
-}
-
 .playlist-count {
 	display: block;
 }
@@ -65,41 +59,4 @@ ul {
 	width: 100%;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
-}
-
-/* -Mobile  */
-@media (min-width: 320px) {
-	.side {
-		/* display: none; */
-		height: 300px;
-		min-height: 200px;
-		overflow: auto;
-	}
-
-	.playlist-item {
-		padding-top: 10px;
-		padding-bottom: 10px;
-	}
-
-	.playlist-item {
-		flex: 1 1 40vw;
-	}
-
-	.button-container {
-		margin-top: 10px;
-	}
-}
-
-/* -Tablet and up */
-@media (min-width: 768px) {
-	.side,
-	.results {
-		display: block;
-		overflow: auto;
-		height: auto;
-	}
-
-	.button-container {
-		margin: 0;
-	}
 }

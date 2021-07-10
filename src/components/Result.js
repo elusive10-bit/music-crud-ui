@@ -11,6 +11,13 @@ const Card = styled(BootstrapCard)`
 	border: none;
 `
 
+const ButtonColumnContainer = styled(Col)`
+	display: flex;
+	flex-flow: column wrap;
+	align-items: center;
+	margin: 0;
+`
+
 const Result = ({
 	result,
 	results,
@@ -85,18 +92,13 @@ const Result = ({
 						</Col>
 					</Col>
 
-					<Col
-						xs='auto'
-						sm='auto'
-						md='auto'
-						lg='auto'
-						className='button-container'>
+					<ButtonColumnContainer xs='auto' sm='auto' md='auto' lg='auto'>
 						{!result.isAdded ? (
 							<Button variant='success' onClick={handleClick}>
 								Add
 							</Button>
 						) : null}
-					</Col>
+					</ButtonColumnContainer>
 				</Row>
 			</Card>
 		</Col>

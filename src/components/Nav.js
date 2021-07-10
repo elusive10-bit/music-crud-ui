@@ -2,11 +2,12 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Container = styled.div`
-	background-color: #4f9b68;
+	background-color: #fff;
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-between;
 	padding: 10px 20px;
+	margin-bottom: 10px;
 `
 const Logo = styled.div`
 	animation-name: rotate-logo;

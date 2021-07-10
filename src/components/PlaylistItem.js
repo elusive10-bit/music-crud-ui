@@ -20,12 +20,12 @@ const PlaylistItemColumn = styled(Col)`
 `
 
 const PlaylistItemName = styled.h4`
-	font-size: 1.1rem;
+	font-size: 1rem;
 	font-weight: 600;
 `
 
 const PlaylistItemArtist = styled.h5`
-	font-size: 1rem;
+	font-size: 0.9rem;
 	font-weight: 400;
 `
 

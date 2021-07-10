@@ -13,6 +13,13 @@ const Button = styled(BootstrapButton)`
 	width: 100%;
 	height: 100%;
 	font-size: 1.2rem;
+	background-color: orange;
+	color: #fff;
+
+	:hover {
+		background-color: rgba(200, 130, 50);
+		color: #fff;
+	}
 `
 
 const ButtonContainer = styled.div`
@@ -67,11 +74,11 @@ const LinkContainer = styled.div`
 	font-size: 1rem;
 
 	a {
-		color: orange;
+		color: #3cae67f9;
 	}
 `
 
-const LoginForm = ({ isRegistered, setIsRegistered }) => {
+const RegisterForm = ({ isRegistered, setIsRegistered }) => {
 	const handleClick = (event) => {
 		event.preventDefault()
 		setIsRegistered(!isRegistered)
@@ -91,19 +98,24 @@ const LoginForm = ({ isRegistered, setIsRegistered }) => {
 				</InputContainer>
 
 				<InputContainer>
+					<label htmlFor='name'>Name</label>
+					<Input type='text' name='name' />
+				</InputContainer>
+
+				<InputContainer>
 					<label htmlFor='password'>Password</label>
 					<Input type='password' name='password' />
 				</InputContainer>
 
 				<ButtonContainer>
-					<Button variant='success' type='submit'>
-						Login
+					<Button variant='' type='submit'>
+						Sign Up
 					</Button>
 				</ButtonContainer>
 
 				<LinkContainer>
 					<a href='' onClick={handleClick}>
-						Don't have an account: Sign Up
+						Already have an account: Sign In
 					</a>
 				</LinkContainer>
 			</Form>
@@ -111,4 +123,4 @@ const LoginForm = ({ isRegistered, setIsRegistered }) => {
 	)
 }
 
-export default LoginForm
+export default RegisterForm
