@@ -7,8 +7,12 @@ import styled from 'styled-components'
 
 const Card = styled(BootstrapCard)`
 	margin-bottom: 20px;
-	border-radius: 10px;
-	border: none;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+
+	.card-image {
+		border-radius: 10px;
+	}
 `
 
 const ButtonColumnContainer = styled(Col)`

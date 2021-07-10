@@ -13,11 +13,15 @@ const PlaylistItemColumn = styled(Col)`
 	justify-content: space-between;
 	margin-bottom: 10px;
 	margin-right: 10px;
-	border-radius: 10px;
-	box-shadow: 2px 2px 5px 1px #317c4a;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border: 1px solid #aaa;
+	/* box-shadow: 1px 1px 2px 1px #999898; */
 	color: #000;
 	align-items: center;
 `
+
+const RemoveButton = styled(Button)``
 
 const PlaylistItemName = styled.h4`
 	font-size: 1rem;
@@ -30,7 +34,8 @@ const PlaylistItemArtist = styled.h5`
 `
 
 const PlaylistItemImage = styled.img`
-	border-radius: 5px;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
 	width: 65px;
 `
 
@@ -98,9 +103,9 @@ const PlaylistItem = ({
 					<PlaylistItemImage src={playlistItem.imgSource} alt='' />
 				</Col>
 				<Col xs='auto' md='auto' className='button-container'>
-					<Button variant='danger' onClick={handleClick}>
+					<RemoveButton variant='danger' onClick={handleClick}>
 						Remove
-					</Button>
+					</RemoveButton>
 				</Col>
 			</PlaylistItemColumn>
 		</>

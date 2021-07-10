@@ -11,7 +11,11 @@ body {
 }
 
 h1 {
-	font-size: 1.9rem;
+	font-size: 2rem;
+}
+
+h2 {
+	font-size: 1.7rem;
 }
 
 h3 {
@@ -43,12 +47,13 @@ ul {
 	background-color: rgb(204, 204, 204);
 	opacity: 0.8;
 	color: rgb(58, 58, 58);
-	box-shadow: 1px 1px 2px 1px #999898;
+	/* box-shadow: 1px 1px 2px 1px #999898; */
 }
 
 .result-removed {
 	opacity: 1;
-	box-shadow: 2px 3px 3px 0px #bdbdbd;
+	/* box-shadow: 2px 3px 3px 0px #bdbdbd; */
+	border: 1px solid #aaa;
 }
 
 .playlist-count {
@@ -57,6 +62,8 @@ ul {
 
 .card-image img {
 	width: 100%;
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
+}
+
+.row-2 {
+	margin-right: 0.8px;
 }

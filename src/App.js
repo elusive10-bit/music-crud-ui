@@ -4,10 +4,12 @@ import Results from './components/Results'
 import RegisterForm from './components/RegisterForm'
 import LoginForm from './components/LoginForm'
 import React, { useState, useEffect } from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container as BootstrapContainer, Row, Col } from 'react-bootstrap'
 import resultsApi from './services/results'
 import playlistApi from './services/playlist'
 import styled from 'styled-components'
+
+const Container = styled(BootstrapContainer)``
 
 const AppContainer = styled.div`
 	display: flex;
@@ -15,12 +17,15 @@ const AppContainer = styled.div`
 
 	padding-top: ${(props) => (props.isLoggedIn ? '0px' : '200px')};
 `
+const ResultsColumn = styled(Col)`
+	margin-right: 0;
+`
 
 const App = () => {
 	const [playlist, setPlaylist] = useState([])
 	const [results, setResults] = useState([])
 	const [isLoggedIn, setIsLoggedIn] = useState(true)
-	const [isRegistered, setIsRegistered] = useState(false)
+	const [isRegistered, setIsRegistered] = useState(true)
 
 	useEffect(() => {
 		console.log('Playlist: ', playlist)
@@ -40,11 +45,11 @@ const App = () => {
 
 	const mainContainer = (
 		<Container fluid='xl' className='main-container'>
-			<Row>
+			<Row className='row-2' noGutters={true}>
 				<Nav />
 			</Row>
 
-			<Row gx={5} noGutters={true}>
+			<Row xs={12} noGutters={true}>
 				<Side
 					currentPlaylist={playlist}
 					setPlaylist={setPlaylist}
@@ -52,14 +57,14 @@ const App = () => {
 					setResults={setResults}
 				/>
 
-				<Col md={8} noGutters={true}>
+				<ResultsColumn md={8}>
 					<Results
 						currentPlaylist={playlist}
 						setPlaylist={setPlaylist}
 						results={results}
 						setResults={setResults}
 					/>
-				</Col>
+				</ResultsColumn>
 			</Row>
 		</Container>
 	)

@@ -11,6 +11,7 @@ const Container = styled(BootstrapContainer)`
 	background-color: #fff;
 	padding: 20px;
 	min-height: 800px;
+	border-radius: 8px;
 	.row {
 		margin: 0;
 	}
@@ -24,6 +25,7 @@ const FormControl = styled(BootstrapForm.Control)`
 	border-radius: 5px;
 	padding: 10px;
 	font-size: 1.1rem;
+	border: 1px solid #999;
 `
 
 const Results = ({ results, setResults, currentPlaylist, setPlaylist }) => {

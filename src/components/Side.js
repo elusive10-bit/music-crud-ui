@@ -4,9 +4,9 @@ import styled from 'styled-components'
 import { Col as BootstrapColumn } from 'react-bootstrap'
 const Column = styled(BootstrapColumn)`
 	background-color: #fff;
-	color: #fff;
 	padding: 20px;
 	min-height: 800px;
+	border-radius: 8px;
 
 	.col {
 		margin: 0;

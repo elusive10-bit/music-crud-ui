@@ -6,8 +6,10 @@ const Container = styled.div`
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-between;
-	padding: 10px 20px;
+	padding: 20px 20px;
 	margin-bottom: 10px;
+	border-radius: 10px;
+	margin-top: 10px;
 `
 const Logo = styled.div`
 	animation-name: rotate-logo;
