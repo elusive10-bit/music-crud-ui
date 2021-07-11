@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
 	Container as BootstrapContainer,
 	Button as BootstrapButton,
 	FormControl,
 } from 'react-bootstrap'
 import styled from 'styled-components'
+import usersProvider from '../services/users'
 
 const Button = styled(BootstrapButton)`
 	display: flex;
@@ -79,12 +80,28 @@ const LinkContainer = styled.div`
 `
 
 const RegisterForm = ({ isRegistered, setIsRegistered }) => {
+	const [username, setUsername] = useState('')
+	const [name, setName] = useState('')
+	const [password, setPassword] = useState('')
+
 	const handleClick = (event) => {
 		event.preventDefault()
 		setIsRegistered(!isRegistered)
 	}
-	const handleSubmit = (event) => {
+	const handleSubmit = async (event) => {
 		event.preventDefault()
+
+		const newUser = {
+			username: username,
+			name: name,
+			password: password,
+		}
+
+		const responseData = await usersProvider.create(newUser)
+		if (responseData.status === 200) {
+			console.log(responseData)
+			setIsRegistered(!isRegistered)
+		}
 	}
 	return (
 		<Container>
@@ -94,17 +111,32 @@ const RegisterForm = ({ isRegistered, setIsRegistered }) => {
 			<Form onSubmit={handleSubmit}>
 				<InputContainer>
 					<label htmlFor='username'>Username</label>
-					<Input type='text' name='username' />
+					<Input
+						type='text'
+						name='username'
+						onChange={({ target }) => setUsername(target.value)}
+						value={username}
+					/>
 				</InputContainer>
 
 				<InputContainer>
 					<label htmlFor='name'>Name</label>
-					<Input type='text' name='name' />
+					<Input
+						type='text'
+						name='name'
+						onChange={({ target }) => setName(target.value)}
+						value={name}
+					/>
 				</InputContainer>
 
 				<InputContainer>
 					<label htmlFor='password'>Password</label>
-					<Input type='password' name='password' />
+					<Input
+						type='password'
+						name='password'
+						onChange={({ target }) => setPassword(target.value)}
+						value={password}
+					/>
 				</InputContainer>
 
 				<ButtonContainer>

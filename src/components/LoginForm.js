@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
 	Container as BootstrapContainer,
 	Button as BootstrapButton,
 	FormControl,
 } from 'react-bootstrap'
+import { toast, ToastContainer } from 'react-toastify'
 import styled from 'styled-components'
+import usersProvider from '../services/users'
 
 const Button = styled(BootstrapButton)`
 	display: flex;
@@ -71,28 +73,59 @@ const LinkContainer = styled.div`
 	}
 `
 
-const LoginForm = ({ isRegistered, setIsRegistered }) => {
+const LoginForm = ({
+	isRegistered,
+	setIsRegistered,
+	isLoggedIn,
+	setIsLoggedIn,
+}) => {
+	const [username, setUsername] = useState('')
+	const [password, setPassword] = useState('')
+
 	const handleClick = (event) => {
 		event.preventDefault()
 		setIsRegistered(!isRegistered)
 	}
-	const handleSubmit = (event) => {
+	const handleSubmit = async (event) => {
 		event.preventDefault()
+
+		const user = {
+			username: username,
+			password: password,
+		}
+
+		if (username !== '' && password !== '') {
+			console.log(response)
+			const response = await usersProvider.login(user)
+		} else {
+			toast.info('invalid username or password')
+		}
 	}
 	return (
 		<Container>
+			<ToastContainer newestOnTop={true} autoClose={3000} />
 			<ImageContainer>
 				<img src='images/logo2.svg' />
 			</ImageContainer>
 			<Form onSubmit={handleSubmit}>
 				<InputContainer>
 					<label htmlFor='username'>Username</label>
-					<Input type='text' name='username' />
+					<Input
+						type='text'
+						name='username'
+						onChange={({ target }) => setUsername(target.value)}
+						value={username}
+					/>
 				</InputContainer>
 
 				<InputContainer>
 					<label htmlFor='password'>Password</label>
-					<Input type='password' name='password' />
+					<Input
+						type='password'
+						name='password'
+						onChange={({ target }) => setPassword(target.value)}
+						value={password}
+					/>
 				</InputContainer>
 
 				<ButtonContainer>

@@ -66,7 +66,7 @@ const Results = ({ results, setResults, currentPlaylist, setPlaylist }) => {
 			</BootstrapForm>
 
 			<ResultsContainer>
-				<Row noGutter={true}>
+				<Row noGutters={true}>
 					<h3>
 						{resultsCounter > 0 ? resultsCounter : 'No'}{' '}
 						{resultsCounter > 1 ? `results` : 'result'} found

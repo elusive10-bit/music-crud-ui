@@ -8,6 +8,7 @@ import { Container as BootstrapContainer, Row, Col } from 'react-bootstrap'
 import resultsApi from './services/results'
 import playlistApi from './services/playlist'
 import styled from 'styled-components'
+import { ToastContainer } from 'react-toastify'
 
 const Container = styled(BootstrapContainer)``
 
@@ -29,7 +30,7 @@ const ResultsColumn = styled(Col)`
 const App = () => {
 	const [playlist, setPlaylist] = useState([])
 	const [results, setResults] = useState([])
-	const [isLoggedIn, setIsLoggedIn] = useState(true)
+	const [isLoggedIn, setIsLoggedIn] = useState(false)
 	const [isRegistered, setIsRegistered] = useState(true)
 
 	useEffect(() => {
@@ -76,8 +77,6 @@ const App = () => {
 
 	return (
 		<AppContainer isLoggedIn={isLoggedIn}>
-			{/* <ToastContainer newestOnTop={true} autoClose={3000} /> */}
-
 			{isLoggedIn ? (
 				mainContainer
 			) : !isRegistered ? (
@@ -89,6 +88,8 @@ const App = () => {
 				<LoginForm
 					isRegistered={isRegistered}
 					setIsRegistered={setIsRegistered}
+					isLoggedIn={isLoggedIn}
+					setIsLoggedIn={setIsLoggedIn}
 				/>
 			)}
 		</AppContainer>
