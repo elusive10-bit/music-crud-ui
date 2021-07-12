@@ -7,7 +7,8 @@ const create = async (newObject) => {
 }
 
 const login = async (credentials) => {
-	return await axios.post(`${baseUrl}/login`, credentials)
+	const response = await axios.post(`${baseUrl}/login`, credentials)
+	return response.data
 }
 
 export default {

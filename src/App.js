@@ -32,6 +32,20 @@ const App = () => {
 	const [results, setResults] = useState([])
 	const [isLoggedIn, setIsLoggedIn] = useState(false)
 	const [isRegistered, setIsRegistered] = useState(true)
+	const [user, setUser] = useState('')
+
+	useEffect(() => {
+		const loggedUserJSON = window.localStorage.getItem('loggedInUser')
+
+		if (loggedUserJSON) {
+			const user = JSON.parse(loggedUserJSON)
+			setUser(user)
+			playlistApi.setToken(user.token)
+			setIsLoggedIn(true)
+		}
+
+		console.log(loggedUserJSON)
+	}, [])
 
 	useEffect(() => {
 		console.log('Playlist: ', playlist)
@@ -52,7 +66,12 @@ const App = () => {
 	const mainContainer = (
 		<Container fluid='xl' className='main-container'>
 			<Row className='row-2'>
-				<Nav />
+				<Nav
+					isLoggedIn={isLoggedIn}
+					setIsLoggedIn={setIsLoggedIn}
+					user={user}
+					setUser={setUser}
+				/>
 			</Row>
 
 			<Row xs={12} noGutters={true}>

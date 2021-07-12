@@ -7,6 +7,7 @@ import {
 import { toast, ToastContainer } from 'react-toastify'
 import styled from 'styled-components'
 import usersProvider from '../services/users'
+import playlistProvider from '../services/playlist'
 
 const Button = styled(BootstrapButton)`
 	display: flex;
@@ -37,7 +38,7 @@ const ImageContainer = styled.div`
 	justify-content: center;
 
 	img {
-		width: 80px;
+		width: 60px;
 	}
 `
 
@@ -89,16 +90,20 @@ const LoginForm = ({
 	const handleSubmit = async (event) => {
 		event.preventDefault()
 
-		const user = {
+		const userCredentials = {
 			username: username,
 			password: password,
 		}
-
-		if (username !== '' && password !== '') {
-			console.log(response)
-			const response = await usersProvider.login(user)
-		} else {
-			toast.info('invalid username or password')
+		try {
+			const user = await usersProvider.login(userCredentials)
+			setIsLoggedIn(!isLoggedIn)
+			window.localStorage.setItem('loggedInUser', JSON.stringify(user))
+			playlistProvider.setToken(user.token)
+			setUsername('')
+			setPassword('')
+		} catch (exception) {
+			toast.error('Wrong Credentials')
+			console.log(exception.message)
 		}
 	}
 	return (

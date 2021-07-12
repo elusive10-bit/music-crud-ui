@@ -14,21 +14,34 @@ const Container = styled.div`
 const Logo = styled.div`
 	animation-name: rotate-logo;
 	animation-duration: 1.7s;
+
 	display: flex;
 	flex-flow: row;
 	color: #fff;
+
+	img {
+		width: 50px;
+	}
 `
 const User = styled.div`
 	animation-name: move-user;
 	animation-duration: 1.7s;
 `
 
-const Nav = () => {
+const Nav = ({ isLoggedIn, setIsLoggedIn, user, setUser }) => {
+	const handleClick = () => {
+		setIsLoggedIn(!isLoggedIn)
+		setUser(null)
+		window.localStorage.clear()
+	}
+
 	return (
 		<Container>
 			<Logo>
-				<img src='images/logo.svg' alt='' id='logo' />
+				<img src='images/logo2.svg' alt='' id='logo' />
 			</Logo>
+
+			<button onClick={handleClick}>Logout</button>
 
 			<User>
 				<img src='images/user.svg' alt='' />

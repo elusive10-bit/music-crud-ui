@@ -43,7 +43,7 @@ const ImageContainer = styled.div`
 	justify-content: center;
 
 	img {
-		width: 80px;
+		width: 60px;
 	}
 `
 

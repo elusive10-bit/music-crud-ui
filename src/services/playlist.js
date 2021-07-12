@@ -6,8 +6,18 @@ const getAll = () => {
 	return axios.get(baseUrl)
 }
 
-const create = (newPlaylistItem) => {
-	return axios.post(baseUrl, newPlaylistItem)
+let token = null
+
+const setToken = (newToken) => {
+	token = `bearer ${newToken}`
+}
+
+const create = async (newPlaylistItem) => {
+	const config = {
+		headers: { Authorization: token },
+	}
+
+	return await axios.post(baseUrl, newPlaylistItem, config)
 }
 
 const deleteItem = (id) => {
@@ -18,6 +28,7 @@ const object = {
 	getAll,
 	create,
 	deleteItem,
+	setToken,
 }
 
 export default object
