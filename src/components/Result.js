@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Button, Col, Row, Card as BootstrapCard } from 'react-bootstrap'
-import axios from 'axios'
 import playlistApi from '../services/playlist'
 import resultsApi from '../services/results'
 import styled from 'styled-components'

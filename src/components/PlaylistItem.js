@@ -1,4 +1,3 @@
-import axios from 'axios'
 import React from 'react'
 import { Button, Col } from 'react-bootstrap'
 import resultsApi from '../services/results'

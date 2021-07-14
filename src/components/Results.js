@@ -7,14 +7,6 @@ import {
 } from 'react-bootstrap'
 import styled from 'styled-components'
 
-const Container = styled(BootstrapContainer)`
-	background-color: #fff;
-	padding: 20px;
-	min-height: 800px;
-	.row {
-		margin: 0;
-	}
-`
 const ResultsContainer = styled(BootstrapContainer)`
 	margin-top: 10px;
 	padding-top: 10px;

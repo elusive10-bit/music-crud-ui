@@ -6,9 +6,7 @@ import LoginForm from './components/LoginForm'
 import React, { useState, useEffect } from 'react'
 import { Container as BootstrapContainer, Row, Col } from 'react-bootstrap'
 import resultsApi from './services/results'
-import playlistApi from './services/playlist'
 import styled from 'styled-components'
-import { ToastContainer } from 'react-toastify'
 
 const Container = styled(BootstrapContainer)``
 
@@ -30,9 +28,11 @@ const ResultsColumn = styled(Col)`
 const App = () => {
 	const [playlist, setPlaylist] = useState([])
 	const [results, setResults] = useState([])
-	const [isLoggedIn, setIsLoggedIn] = useState(false)
+	const [isLoggedIn, setIsLoggedIn] = useState(true)
 	const [isRegistered, setIsRegistered] = useState(true)
 	const [user, setUser] = useState('')
+
+	console.log(user)
 
 	useEffect(() => {
 		const loggedUserJSON = window.localStorage.getItem('loggedInUser')
@@ -40,7 +40,6 @@ const App = () => {
 		if (loggedUserJSON) {
 			const user = JSON.parse(loggedUserJSON)
 			setUser(user)
-			playlistApi.setToken(user.token)
 			setIsLoggedIn(true)
 		}
 
@@ -48,17 +47,11 @@ const App = () => {
 	}, [])
 
 	useEffect(() => {
-		console.log('Playlist: ', playlist)
-		console.log('Results: ', results)
-		console.log('IsRegistered', isRegistered)
-	}, [playlist, results, isRegistered])
-
-	useEffect(() => {
 		resultsApi.getAll().then((response) => {
 			setResults(response.data)
 		})
 
-		playlistApi.getAll().then((response) => {
+		resultsApi.getAllSelected().then((response) => {
 			setPlaylist(response.data)
 		})
 	}, [])
