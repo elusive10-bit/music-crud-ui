@@ -1,15 +1,20 @@
 import axios from 'axios'
 
-const baseUrl = '/api/current-playlist'
-
-const getAll = () => {
-	return axios.get(baseUrl)
-}
+const baseUrl = '/api/playlist'
 
 let token = null
 
 const setToken = (newToken) => {
 	token = `bearer ${newToken}`
+}
+
+const getAllPlaylists = async () => {
+	const config = {
+		headers: { Authorization: token },
+	}
+	const request = await axios.get(baseUrl, config)
+
+	return request
 }
 
 const create = async (newPlaylistItem) => {
@@ -25,7 +30,7 @@ const deleteItem = (id) => {
 }
 
 const object = {
-	getAll,
+	getAllPlaylists,
 	create,
 	deleteItem,
 	setToken,

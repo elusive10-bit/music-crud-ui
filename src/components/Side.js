@@ -9,18 +9,12 @@ const Column = styled(BootstrapColumn)`
 	border-right: 1px solid #aaa;
 `
 
-const Side = ({
-	currentPlaylist,
-	setPlaylist,
-	results,
-	setResults,
-	onStart,
-}) => {
+const Side = ({ playlists, setPlaylists, results, setResults, onStart }) => {
 	return (
 		<Column md='4' xs='12'>
 			<Playlist
-				currentPlaylist={currentPlaylist}
-				setPlaylist={setPlaylist}
+				playlists={playlists}
+				setPlaylists={setPlaylists}
 				results={results}
 				setResults={setResults}
 				onStart={onStart}

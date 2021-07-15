@@ -6,8 +6,14 @@ const getAll = () => {
 	return axios.get(baseUrl)
 }
 
-const getAllSelected = (id) => {
-	return axios.get(`${baseUrl}/user/${id}`)
+let token = null
+
+const setToken = (newToken) => {
+	token = `bearer ${newToken}`
+}
+
+const getAllSelected = () => {
+	return axios.get(`${baseUrl}/user/${token}`)
 }
 
 const update = (id, updatedObject) => {
@@ -18,6 +24,7 @@ const object = {
 	getAll,
 	getAllSelected,
 	update,
+	setToken,
 }
 
 export default object

@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Col, Row, Card as BootstrapCard } from 'react-bootstrap'
-import playlistApi from '../services/playlist'
+import playlistApi from '../services/playlists'
 import resultsApi from '../services/results'
 import styled from 'styled-components'
 
@@ -27,7 +27,19 @@ const Result = ({
 	setResults,
 	currentPlaylist,
 	setPlaylist,
+	user,
 }) => {
+	const [selectedResults, setSelectedResults] = useState([])
+	const [isAdded, setIsAdded] = useState(false)
+
+	useEffect(() => {
+		resultsApi.getAllSelected().then((response) => {
+			setSelectedResults(response.data)
+		})
+
+		console.log(selectedResults)
+	}, [])
+
 	const updateResults = () => {
 		const resultToUpdate = results.map((item) => {
 			if (item.id === result.id) {
@@ -96,7 +108,7 @@ const Result = ({
 					</Col>
 
 					<ButtonColumnContainer xs='auto' sm='auto' md='auto' lg='auto'>
-						{!result.isAdded ? (
+						{isAdded ? (
 							<Button variant='success' onClick={handleClick}>
 								Add
 							</Button>

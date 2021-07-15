@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button, Col } from 'react-bootstrap'
 import resultsApi from '../services/results'
-import playlistApi from '../services/playlist'
+import playlistApi from '../services/playlists'
 import styled from 'styled-components'
 
 const PlaylistItemColumn = styled(Col)`
@@ -40,75 +40,62 @@ const PlaylistItemImage = styled.img`
 	width: 65px;
 `
 
-const PlaylistItem = ({
-	playlistItem,
-	setPlaylist,
-	currentPlaylist,
-	results,
-	setResults,
-	onStart,
-}) => {
-	const updateResults = (itemToModify) => {
-		const updatedResults = results.map((item) => {
-			if (item.id === playlistItem.id) {
-				return { ...item, isAdded: !item.isAdded }
-			}
-			return item
-		})
+const PlaylistItem = ({ playlist_item }) => {
+	const [noItems, setNoItems] = useState(false)
 
-		setResults(updatedResults)
-
-		const updateItem = {
-			...itemToModify,
-			isAdded: false,
+	useEffect(() => {
+		if (playlist_item.length === 0) {
+			setNoItems(true)
+			console.log(noItems)
 		}
-		resultsApi.update(itemToModify.id, updateItem).then((response) => {
-			console.log(response.data)
-		})
-	}
+	}, [playlist_item.length])
+	// const updateResults = (itemToModify) => {
+	// 	const updatedResults = results.map((item) => {
+	// 		if (item.id === playlistItem.id) {
+	// 			return { ...item, isAdded: !item.isAdded }
+	// 		}
+	// 		return item
+	// 	})
 
-	const deletePlaylistItem = (id) => {
-		playlistApi
-			.deleteItem(id)
-			.then((response) => {
-				console.log(response.data)
-			})
-			.catch((error) => console.log(error.message))
-	}
+	// 	setResults(updatedResults)
 
-	const handleClick = () => {
-		const itemToModify = currentPlaylist.find(
-			(item) => item.id === playlistItem.id
-		)
+	// 	const updateItem = {
+	// 		...itemToModify,
+	// 		isAdded: false,
+	// 	}
+	// 	resultsApi.update(itemToModify.id, updateItem).then((response) => {
+	// 		console.log(response.data)
+	// 	})
+	// }
 
-		updateResults(itemToModify)
+	// const deletePlaylistItem = (id) => {
+	// 	playlistApi
+	// 		.deleteItem(id)
+	// 		.then((response) => {
+	// 			console.log(response.data)
+	// 		})
+	// 		.catch((error) => console.log(error.message))
+	// }
 
-		setPlaylist(currentPlaylist.filter((item) => item.id !== itemToModify.id))
+	// const handleClick = () => {
+	// 	const itemToModify = currentPlaylist.find(
+	// 		(item) => item.id === playlistItem.id
+	// 	)
 
-		deletePlaylistItem(itemToModify.id)
-	}
+	// 	updateResults(itemToModify)
+
+	// 	setPlaylist(currentPlaylist.filter((item) => item.id !== itemToModify.id))
+
+	// 	deletePlaylistItem(itemToModify.id)
+	// }
 
 	return (
 		<>
-			<PlaylistItemColumn xs={5} sm={5} md={12}>
-				<Col xs={12} md={4}>
-					<Col>
-						<PlaylistItemName>{playlistItem.name}</PlaylistItemName>
-					</Col>
-					<Col>
-						<PlaylistItemArtist>by {playlistItem.artist}</PlaylistItemArtist>
-					</Col>
-				</Col>
-
-				<Col sm={4} lg={4}>
-					<PlaylistItemImage src={playlistItem.imgSource} alt='' />
-				</Col>
-				<Col xs='auto' md='auto' className='button-container'>
-					<RemoveButton variant='danger' onClick={handleClick}>
-						Remove
-					</RemoveButton>
-				</Col>
-			</PlaylistItemColumn>
+			{noItems ? (
+				<h5>No Items</h5>
+			) : (
+				`${playlist_item.name} by ${playlist_item.artist}`
+			)}
 		</>
 	)
 }

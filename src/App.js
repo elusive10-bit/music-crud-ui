@@ -6,7 +6,10 @@ import LoginForm from './components/LoginForm'
 import React, { useState, useEffect } from 'react'
 import { Container as BootstrapContainer, Row, Col } from 'react-bootstrap'
 import resultsApi from './services/results'
+import playlistsApi from './services/playlists'
+import usersApi from './services/users'
 import styled from 'styled-components'
+import { toast, ToastContainer } from 'react-toastify'
 
 const Container = styled(BootstrapContainer)``
 
@@ -26,38 +29,44 @@ const ResultsColumn = styled(Col)`
 `
 
 const App = () => {
-	const [playlist, setPlaylist] = useState([])
+	const [playlists, setPlaylists] = useState([])
 	const [results, setResults] = useState([])
-	const [isLoggedIn, setIsLoggedIn] = useState(true)
+	const [isLoggedIn, setIsLoggedIn] = useState(false)
 	const [isRegistered, setIsRegistered] = useState(true)
 	const [user, setUser] = useState('')
-
-	console.log(user)
+	const [username, setUsername] = useState('')
+	const [password, setPassword] = useState('')
 
 	useEffect(() => {
 		const loggedUserJSON = window.localStorage.getItem('loggedInUser')
 
 		if (loggedUserJSON) {
 			const user = JSON.parse(loggedUserJSON)
-			setUser(user)
 			setIsLoggedIn(true)
+			setUser(user)
+			resultsApi.setToken(user.token)
+			playlistsApi.setToken(user.token)
+		} else {
+			setIsLoggedIn(false)
 		}
 
-		console.log(loggedUserJSON)
-	}, [])
-
-	useEffect(() => {
 		resultsApi.getAll().then((response) => {
 			setResults(response.data)
 		})
 
-		resultsApi.getAllSelected().then((response) => {
-			setPlaylist(response.data)
-		})
-	}, [])
+		if (isLoggedIn) {
+			playlistsApi.getAllPlaylists().then((response) => {
+				setPlaylists(response.data)
+			})
+		} else {
+			setPlaylists([])
+		}
+	}, [isLoggedIn])
 
 	const mainContainer = (
 		<Container fluid='xl' className='main-container'>
+			<ToastContainer></ToastContainer>
+
 			<Row className='row-2'>
 				<Nav
 					isLoggedIn={isLoggedIn}
@@ -69,23 +78,45 @@ const App = () => {
 
 			<Row xs={12} noGutters={true}>
 				<Side
-					currentPlaylist={playlist}
-					setPlaylist={setPlaylist}
+					playlists={playlists}
+					setPlaylists={setPlaylists}
 					results={results}
 					setResults={setResults}
 				/>
 
-				<ResultsColumn md={8}>
+				{/* <ResultsColumn md={8}>
 					<Results
-						currentPlaylist={playlist}
-						setPlaylist={setPlaylist}
+						currentPlaylist={playlists}
+						setPlaylist={setPlaylists}
 						results={results}
 						setResults={setResults}
+						user={user}
 					/>
-				</ResultsColumn>
+				</ResultsColumn> */}
 			</Row>
 		</Container>
 	)
+
+	const handleSubmit = async (event) => {
+		event.preventDefault()
+
+		const userCredentials = {
+			username: username,
+			password: password,
+		}
+		try {
+			const user = await usersApi.login(userCredentials)
+			setIsLoggedIn(!isLoggedIn)
+			window.localStorage.setItem('loggedInUser', JSON.stringify(user))
+			resultsApi.setToken(user.token)
+			setUsername('')
+			setPassword('')
+			setUser(user)
+		} catch (exception) {
+			toast.error('Wrong Credentials')
+			console.log(exception.message)
+		}
+	}
 
 	return (
 		<AppContainer isLoggedIn={isLoggedIn}>
@@ -98,10 +129,16 @@ const App = () => {
 				/>
 			) : (
 				<LoginForm
+					setUser={setUser}
 					isRegistered={isRegistered}
 					setIsRegistered={setIsRegistered}
 					isLoggedIn={isLoggedIn}
 					setIsLoggedIn={setIsLoggedIn}
+					username={username}
+					setUsername={setUsername}
+					password={password}
+					setPassword={setPassword}
+					handleSubmit={handleSubmit}
 				/>
 			)}
 		</AppContainer>
