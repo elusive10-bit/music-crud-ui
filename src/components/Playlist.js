@@ -1,13 +1,26 @@
 import React, { useState } from 'react'
 import PlaylistItem from './PlaylistItem'
-import { sort } from 'fast-sort'
 import { toast } from 'react-toastify'
-import { Col, Container as BootstrapContainer, Row } from 'react-bootstrap'
+import { Button, Form as BootstrapForm } from 'react-bootstrap'
 import styled from 'styled-components'
 import playlistsApi from '../services/playlists'
 
-const PlaylistContainer = styled(BootstrapContainer)`
-	margin-top: 20px;
+const Form = styled(BootstrapForm)`
+	display: flex;
+
+	button {
+		margin-left: 10px;
+	}
+`
+
+const PlaylistContainer = styled.div`
+	margin-bottom: 20px;
+	border-bottom: 1px solid #aaa;
+	padding: 10px;
+
+	button {
+		margin-left: 10px;
+	}
 `
 
 const Playlist = ({
@@ -29,6 +42,7 @@ const Playlist = ({
 			try {
 				const savedPlaylist = await playlistsApi.create(newPlaylist)
 				setPlaylists(playlists.concat(savedPlaylist.data))
+				setPlaylistName('')
 			} catch (exception) {
 				console.log(exception.message)
 				toast.info('Error detected')
@@ -39,23 +53,36 @@ const Playlist = ({
 	return (
 		<>
 			<h2>Playlists</h2>
+			<hr />
 			{playlists.map((playlist) => (
-				<div key={playlist.id}>
-					<h2>{playlist.name}</h2>
+				<PlaylistContainer key={playlist.id}>
+					<h3>{playlist.name}</h3>
 
 					{playlist.playlist_items.map((item) => (
-						<PlaylistItem playlist_item={item} key={item.id} />
+						<PlaylistItem
+							playlist={playlist}
+							playlists={playlists}
+							setPlaylists={setPlaylists}
+							playlist_item={item}
+							key={item.id}
+						/>
 					))}
-				</div>
+				</PlaylistContainer>
 			))}
-			<form onSubmit={handleSubmit}>
-				<input
-					type='text'
-					value={playlistName}
-					onChange={({ target }) => setPlaylistName(target.value)}
-				/>
-				<button type='submit'>Add Playlist</button>
-			</form>
+			<Form onSubmit={handleSubmit}>
+				<div>
+					<Form.Control
+						type='text'
+						value={playlistName}
+						onChange={({ target }) => setPlaylistName(target.value)}
+					/>
+				</div>
+				<div>
+					<Button variant='success' type='submit'>
+						Add Playlist
+					</Button>
+				</div>
+			</Form>
 		</>
 	)
 }

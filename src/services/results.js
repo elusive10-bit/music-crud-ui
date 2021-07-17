@@ -20,11 +20,22 @@ const update = (id, updatedObject) => {
 	return axios.put(`${baseUrl}/${id}`, updatedObject)
 }
 
+const findResultNotFromPlaylist = (id) => {
+	const config = {
+		headers: {
+			Authorization: token,
+		},
+	}
+
+	return axios.get(`${baseUrl}/${id}`, config)
+}
+
 const object = {
 	getAll,
 	getAllSelected,
 	update,
 	setToken,
+	findResultNotFromPlaylist,
 }
 
 export default object

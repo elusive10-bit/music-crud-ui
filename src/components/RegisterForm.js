@@ -101,12 +101,15 @@ const RegisterForm = ({ isRegistered, setIsRegistered }) => {
 		if (responseData.status === 200) {
 			console.log(responseData)
 			setIsRegistered(!isRegistered)
+			setName('')
+			setUsername('')
+			setPassword('')
 		}
 	}
 	return (
 		<Container>
 			<ImageContainer>
-				<img src='images/logo2.svg' />
+				<img src='images/logo2.svg' alt='' />
 			</ImageContainer>
 			<Form onSubmit={handleSubmit}>
 				<InputContainer>
@@ -146,9 +149,9 @@ const RegisterForm = ({ isRegistered, setIsRegistered }) => {
 				</ButtonContainer>
 
 				<LinkContainer>
-					<a href='' onClick={handleClick}>
+					<button onClick={handleClick}>
 						Already have an account: Sign In
-					</a>
+					</button>
 				</LinkContainer>
 			</Form>
 		</Container>

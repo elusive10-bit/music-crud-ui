@@ -25,15 +25,29 @@ const create = async (newPlaylistItem) => {
 	return await axios.post(baseUrl, newPlaylistItem, config)
 }
 
-const deleteItem = (id) => {
-	return axios.delete(`${baseUrl}/${id}`)
+const deleteItemFromPlaylist = async (item_id, playlist_id) => {
+	const request_body = {
+		playlist_id,
+	}
+
+	return await axios.put(`${baseUrl}/${item_id}`, request_body)
+}
+
+const addToPlaylist = async (playlist_id, result_id) => {
+	const updated = {
+		playlist_id,
+		result_id,
+	}
+
+	return await axios.put(`${baseUrl}/result/${result_id}`, updated)
 }
 
 const object = {
 	getAllPlaylists,
 	create,
-	deleteItem,
+	deleteItemFromPlaylist,
 	setToken,
+	addToPlaylist,
 }
 
 export default object

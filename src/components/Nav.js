@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Button } from 'react-bootstrap'
 
 const Container = styled.div`
 	background-color: #fff;
@@ -26,6 +27,11 @@ const Logo = styled.div`
 const User = styled.div`
 	animation-name: move-user;
 	animation-duration: 1.7s;
+	button {
+		margin-right: 10px;
+		color: #fff;
+		font-size: 1.1rem;
+	}
 `
 
 const Nav = ({ isLoggedIn, setIsLoggedIn, user, setUser }) => {
@@ -41,9 +47,10 @@ const Nav = ({ isLoggedIn, setIsLoggedIn, user, setUser }) => {
 				<img src='images/logo2.svg' alt='' id='logo' />
 			</Logo>
 
-			<button onClick={handleClick}>Logout</button>
-
 			<User>
+				<Button variant='warning' onClick={handleClick}>
+					Logout
+				</Button>
 				<img src='images/user.svg' alt='' />
 			</User>
 		</Container>

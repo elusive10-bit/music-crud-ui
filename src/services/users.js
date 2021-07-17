@@ -11,7 +11,9 @@ const login = async (credentials) => {
 	return response.data
 }
 
-export default {
+const users = {
 	create,
 	login,
 }
+
+export default users

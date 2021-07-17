@@ -50,11 +50,10 @@ const App = () => {
 			setIsLoggedIn(false)
 		}
 
-		resultsApi.getAll().then((response) => {
-			setResults(response.data)
-		})
-
 		if (isLoggedIn) {
+			resultsApi.getAll().then((response) => {
+				setResults(response.data)
+			})
 			playlistsApi.getAllPlaylists().then((response) => {
 				setPlaylists(response.data)
 			})
@@ -84,15 +83,15 @@ const App = () => {
 					setResults={setResults}
 				/>
 
-				{/* <ResultsColumn md={8}>
+				<ResultsColumn md={8}>
 					<Results
-						currentPlaylist={playlists}
-						setPlaylist={setPlaylists}
+						playlists={playlists}
+						setPlaylists={setPlaylists}
 						results={results}
 						setResults={setResults}
 						user={user}
 					/>
-				</ResultsColumn> */}
+				</ResultsColumn>
 			</Row>
 		</Container>
 	)

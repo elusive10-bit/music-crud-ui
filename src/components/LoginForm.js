@@ -1,13 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {
 	Container as BootstrapContainer,
 	Button as BootstrapButton,
 	FormControl,
 } from 'react-bootstrap'
-import { toast, ToastContainer } from 'react-toastify'
+import { ToastContainer } from 'react-toastify'
 import styled from 'styled-components'
-import usersApi from '../services/users'
-import resultsApi from '../services/results'
 
 const Button = styled(BootstrapButton)`
 	display: flex;
@@ -89,13 +87,15 @@ const LoginForm = ({
 	const handleClick = (event) => {
 		event.preventDefault()
 		setIsRegistered(!isRegistered)
+		setUsername('')
+		setPassword('')
 	}
 
 	return (
 		<Container>
 			<ToastContainer newestOnTop={true} autoClose={3000} />
 			<ImageContainer>
-				<img src='images/logo2.svg' />
+				<img src='images/logo2.svg' alt='' />
 			</ImageContainer>
 			<Form onSubmit={handleSubmit}>
 				<InputContainer>
@@ -125,9 +125,7 @@ const LoginForm = ({
 				</ButtonContainer>
 
 				<LinkContainer>
-					<a href='' onClick={handleClick}>
-						Don't have an account: Sign Up
-					</a>
+					<button onClick={handleClick}>Don't have an account: Sign Up</button>
 				</LinkContainer>
 			</Form>
 		</Container>

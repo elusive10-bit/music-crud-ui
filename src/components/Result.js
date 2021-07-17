@@ -1,8 +1,23 @@
-import React, { useEffect, useState } from 'react'
-import { Button, Col, Row, Card as BootstrapCard } from 'react-bootstrap'
-import playlistApi from '../services/playlists'
+import React, { useState } from 'react'
+import {
+	Button,
+	Col,
+	Row,
+	Card as BootstrapCard,
+	Modal as BootstrapModal,
+} from 'react-bootstrap'
+import playlistsApi from '../services/playlists'
 import resultsApi from '../services/results'
 import styled from 'styled-components'
+
+const Modal = styled(BootstrapModal)`
+	.modal-body li {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-between;
+		line-height: 3.2rem;
+	}
+`
 
 const Card = styled(BootstrapCard)`
 	margin-bottom: 20px;
@@ -25,70 +40,77 @@ const Result = ({
 	result,
 	results,
 	setResults,
-	currentPlaylist,
-	setPlaylist,
+	playlists,
+	setPlaylists,
 	user,
 }) => {
-	const [selectedResults, setSelectedResults] = useState([])
-	const [isAdded, setIsAdded] = useState(false)
-
-	useEffect(() => {
-		resultsApi.getAllSelected().then((response) => {
-			setSelectedResults(response.data)
-		})
-
-		console.log(selectedResults)
-	}, [])
-
-	const updateResults = () => {
-		const resultToUpdate = results.map((item) => {
-			if (item.id === result.id) {
-				return {
-					...item,
-					isAdded: !result.isAdded,
-				}
-			}
-			return item
-		})
-		setResults(resultToUpdate)
-
-		const updateResult = {
-			...result,
-			isAdded: !result.isAdded,
-		}
-
-		resultsApi.update(result.id, updateResult).then((response) => {
-			console.log(response.data)
-		})
-	}
-
-	const addToPlaylist = () => {
-		const resultObject = {
-			id: result.id,
-			name: result.name,
-			artist: result.artist,
-			isAdded: !result.isAdded,
-			color: result.color,
-			lightFont: result.lightFont,
-			imgSource: result.imgSource,
-			date: new Date(),
-		}
-		setPlaylist(currentPlaylist.concat(resultObject))
-
-		playlistApi.create(resultObject).then((response) => {
-			console.log(response.data)
-		})
-	}
+	const [show, setShow] = useState(false)
 
 	const handleClick = () => {
-		updateResults()
-		addToPlaylist()
+		setShow(true)
+	}
+
+	const handleClose = () => {
+		setShow(false)
+	}
+
+	const addToPlaylist = async (playlistId, resultId) => {
+		await playlistsApi.addToPlaylist(playlistId, resultId)
+		const playlistToFind = playlists.find(
+			(playlist) => playlist.id === playlistId
+		)
+
+		const playlist_items = playlistToFind.playlist_items.concat(result)
+
+		setPlaylists(
+			playlists.map((playlist) =>
+				playlist.id === playlistId
+					? { ...playlistToFind, playlist_items: playlist_items }
+					: playlist
+			)
+		)
+
+		const response = await resultsApi.getAll()
+
+		setResults(response.data)
+
+		setShow(false)
 	}
 
 	const cardState = result.isAdded ? 'result-added' : 'result-removed'
 
+	const emptyPlaylist = () => <h4>No playlists added</h4>
+
+	const notEmptyPlaylist = () =>
+		playlists.map((playlist) =>
+			playlist.playlist_items.find((item) => item.id === result.id) ? (
+				<li key={playlist.id}>{playlist.name} (Added)</li>
+			) : (
+				<li key={playlist.id}>
+					{playlist.name}
+					<div>
+						<Button
+							variant='success'
+							onClick={() => addToPlaylist(playlist.id, result.id)}>
+							Add
+						</Button>
+					</div>
+				</li>
+			)
+		)
+
 	return (
 		<Col xs={6} md={6} sm={6} lg={4} xl={3}>
+			<Modal show={show} size='sm' onHide={handleClose}>
+				<Modal.Header>
+					<Modal.Title>Add to Playlists</Modal.Title>
+					<span onClick={handleClose}>X</span>
+				</Modal.Header>
+				<Modal.Body>
+					{playlists.length > 0 ? notEmptyPlaylist() : emptyPlaylist()}
+				</Modal.Body>
+			</Modal>
+
 			<Card className={`${cardState}`}>
 				{/* <div className='card-image'>
 					<img src='images/playThumbnail.svg' />
@@ -108,11 +130,9 @@ const Result = ({
 					</Col>
 
 					<ButtonColumnContainer xs='auto' sm='auto' md='auto' lg='auto'>
-						{isAdded ? (
-							<Button variant='success' onClick={handleClick}>
-								Add
-							</Button>
-						) : null}
+						<Button variant='success' onClick={handleClick}>
+							Add
+						</Button>
 					</ButtonColumnContainer>
 				</Row>
 			</Card>

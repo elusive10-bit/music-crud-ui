@@ -19,13 +19,7 @@ const FormControl = styled(BootstrapForm.Control)`
 	border: 1px solid #999;
 `
 
-const Results = ({
-	results,
-	setResults,
-	currentPlaylist,
-	setPlaylist,
-	user,
-}) => {
+const Results = ({ results, setResults, playlists, setPlaylists, user }) => {
 	const [searchItem, setSearchItem] = useState('')
 	const [filteredResults, setFilteredResults] = useState([])
 
@@ -74,8 +68,8 @@ const Results = ({
 								return (
 									<Result
 										key={result.id}
-										setPlaylist={setPlaylist}
-										currentPlaylist={currentPlaylist}
+										setPlaylists={setPlaylists}
+										playlists={playlists}
 										result={result}
 										results={results}
 										setResults={setResults}
