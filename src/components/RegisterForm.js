@@ -74,8 +74,11 @@ const LinkContainer = styled.div`
 	margin-top: 10px;
 	font-size: 1rem;
 
-	a {
+	button {
+		background-color: #fff;
+		border: none;
 		color: #3cae67f9;
+		box-shadow: 0;
 	}
 `
 
