@@ -4,8 +4,16 @@ import playlistApi from '../services/playlists'
 import styled from 'styled-components'
 
 const List = styled.li`
-	line-height: 3rem;
+	line-height: 2rem;
 	display: flex;
+	flex-flow: row;
+	justify-content: space-between;
+	min-width: 200px;
+	max-width: 400px;
+	border: 1px solid #aaa;
+	border-radius: 3px;
+	margin-bottom: 10px;
+	padding: 10px;
 `
 
 const PlaylistItem = ({ playlists, setPlaylists, playlist, playlist_item }) => {
