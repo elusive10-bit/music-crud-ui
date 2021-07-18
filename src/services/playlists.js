@@ -42,12 +42,17 @@ const addToPlaylist = async (playlist_id, result_id) => {
 	return await axios.put(`${baseUrl}/result/${result_id}`, updated)
 }
 
+const removePlaylist = async (playlist_id) => {
+	return await axios.delete(`${baseUrl}/${playlist_id}`)
+}
+
 const object = {
 	getAllPlaylists,
 	create,
 	deleteItemFromPlaylist,
 	setToken,
 	addToPlaylist,
+	removePlaylist,
 }
 
 export default object

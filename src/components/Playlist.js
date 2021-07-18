@@ -23,6 +23,12 @@ const PlaylistContainer = styled.div`
 	}
 `
 
+const Container = styled.div`
+	display: flex;
+	flex-flow: row wrap;
+	margin-bottom: 20px;
+`
+
 const Playlist = ({
 	playlists,
 	setPlaylists,
@@ -50,13 +56,29 @@ const Playlist = ({
 		}
 	}
 
+	const deletePlaylist = async (id) => {
+		await playlistsApi.removePlaylist(id)
+
+		const savedPlaylists = await playlistsApi.getAllPlaylists()
+		setPlaylists(savedPlaylists.data)
+	}
+
 	return (
 		<>
 			<h2>Playlists</h2>
 			<hr />
 			{playlists.map((playlist) => (
 				<PlaylistContainer key={playlist.id}>
-					<h3>{playlist.name}</h3>
+					<Container>
+						<h3>{playlist.name}</h3>
+						<div>
+							<Button
+								variant='danger'
+								onClick={() => deletePlaylist(playlist.id)}>
+								Remove
+							</Button>
+						</div>
+					</Container>
 
 					{playlist.playlist_items.map((item) => (
 						<PlaylistItem
