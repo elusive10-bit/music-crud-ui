@@ -45,7 +45,7 @@ const Playlist = ({
 				setPlaylistName('')
 			} catch (exception) {
 				console.log(exception.message)
-				toast.info('Error detected')
+				toast.info('Duplicate Playlist Name')
 			}
 		}
 	}

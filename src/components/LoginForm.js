@@ -4,8 +4,11 @@ import {
 	Button as BootstrapButton,
 	FormControl,
 } from 'react-bootstrap'
-import { ToastContainer } from 'react-toastify'
+import { ToastContainer, toast } from 'react-toastify'
 import styled from 'styled-components'
+import usersApi from '../services/users'
+import resultsApi from '../services/results'
+import playlistsApi from '../services/playlists'
 
 const Button = styled(BootstrapButton)`
 	display: flex;
@@ -85,13 +88,34 @@ const LoginForm = ({
 	setUsername,
 	password,
 	setPassword,
-	handleSubmit,
 }) => {
 	const handleClick = (event) => {
 		event.preventDefault()
 		setIsRegistered(!isRegistered)
 		setUsername('')
 		setPassword('')
+	}
+
+	const handleSubmit = async (event) => {
+		event.preventDefault()
+
+		const userCredentials = {
+			username: username,
+			password: password,
+		}
+		try {
+			const user = await usersApi.login(userCredentials)
+			window.localStorage.setItem('loggedInUser', JSON.stringify(user))
+			resultsApi.setToken(user.token)
+			playlistsApi.setToken(user.token)
+			setUsername('')
+			setPassword('')
+			setUser(user)
+			setIsLoggedIn(!isLoggedIn)
+		} catch (exception) {
+			toast.error('Wrong Credentials')
+			console.log(exception.message)
+		}
 	}
 
 	return (

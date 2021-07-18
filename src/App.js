@@ -7,9 +7,8 @@ import React, { useState, useEffect } from 'react'
 import { Container as BootstrapContainer, Row, Col } from 'react-bootstrap'
 import resultsApi from './services/results'
 import playlistsApi from './services/playlists'
-import usersApi from './services/users'
 import styled from 'styled-components'
-import { toast, ToastContainer } from 'react-toastify'
+import { ToastContainer } from 'react-toastify'
 
 const Container = styled(BootstrapContainer)``
 
@@ -39,15 +38,12 @@ const App = () => {
 
 	useEffect(() => {
 		const loggedUserJSON = window.localStorage.getItem('loggedInUser')
-
 		if (loggedUserJSON) {
 			const user = JSON.parse(loggedUserJSON)
-			setIsLoggedIn(true)
 			setUser(user)
 			resultsApi.setToken(user.token)
 			playlistsApi.setToken(user.token)
-		} else {
-			setIsLoggedIn(false)
+			setIsLoggedIn(true)
 		}
 
 		if (isLoggedIn) {
@@ -96,27 +92,6 @@ const App = () => {
 		</Container>
 	)
 
-	const handleSubmit = async (event) => {
-		event.preventDefault()
-
-		const userCredentials = {
-			username: username,
-			password: password,
-		}
-		try {
-			const user = await usersApi.login(userCredentials)
-			setIsLoggedIn(!isLoggedIn)
-			window.localStorage.setItem('loggedInUser', JSON.stringify(user))
-			resultsApi.setToken(user.token)
-			setUsername('')
-			setPassword('')
-			setUser(user)
-		} catch (exception) {
-			toast.error('Wrong Credentials')
-			console.log(exception.message)
-		}
-	}
-
 	return (
 		<AppContainer isLoggedIn={isLoggedIn}>
 			{isLoggedIn ? (
@@ -137,7 +112,6 @@ const App = () => {
 					setUsername={setUsername}
 					password={password}
 					setPassword={setPassword}
-					handleSubmit={handleSubmit}
 				/>
 			)}
 		</AppContainer>

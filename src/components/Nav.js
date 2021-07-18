@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Button } from 'react-bootstrap'
+import resultsApi from '../services/results'
+import playlistsApi from '../services/playlists'
 
 const Container = styled.div`
 	background-color: #fff;
@@ -25,12 +27,21 @@ const Logo = styled.div`
 	}
 `
 const User = styled.div`
+	display: flex;
+	flex-flow: row;
 	animation-name: move-user;
 	animation-duration: 1.7s;
+	align-items: center;
+
 	button {
 		margin-right: 10px;
 		color: #fff;
 		font-size: 1.1rem;
+	}
+
+	.userName {
+		margin-right: 10px;
+		font-weight: 600;
 	}
 `
 
@@ -39,6 +50,8 @@ const Nav = ({ isLoggedIn, setIsLoggedIn, user, setUser }) => {
 		setIsLoggedIn(!isLoggedIn)
 		setUser(null)
 		window.localStorage.clear()
+		resultsApi.setToken(null)
+		playlistsApi.setToken(null)
 	}
 
 	return (
@@ -48,7 +61,10 @@ const Nav = ({ isLoggedIn, setIsLoggedIn, user, setUser }) => {
 			</Logo>
 
 			<User>
-				<Button variant='warning' onClick={handleClick}>
+				<h4>
+					Welcome <span className='userName'>{user.name}</span>
+				</h4>
+				<Button variant='warning' onClick={() => handleClick()}>
 					Logout
 				</Button>
 				<img src='images/user.svg' alt='' />

@@ -91,7 +91,12 @@ const RegisterForm = ({ isRegistered, setIsRegistered }) => {
 		event.preventDefault()
 		setIsRegistered(!isRegistered)
 	}
-	const handleSubmit = async (event) => {
+
+	const createNewUser = async (newUser) => {
+		await usersProvider.create(newUser)
+	}
+
+	const handleSubmit = (event) => {
 		event.preventDefault()
 
 		const newUser = {
@@ -100,15 +105,14 @@ const RegisterForm = ({ isRegistered, setIsRegistered }) => {
 			password: password,
 		}
 
-		const responseData = await usersProvider.create(newUser)
-		if (responseData.status === 200) {
-			console.log(responseData)
-			setIsRegistered(!isRegistered)
-			setName('')
-			setUsername('')
-			setPassword('')
-		}
+		createNewUser(newUser)
+
+		setIsRegistered(!isRegistered)
+		setName('')
+		setUsername('')
+		setPassword('')
 	}
+
 	return (
 		<Container>
 			<ImageContainer>

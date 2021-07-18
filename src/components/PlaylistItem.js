@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Button } from 'react-bootstrap'
 import playlistApi from '../services/playlists'
 import styled from 'styled-components'
+import { toast } from 'react-toastify'
 
 const List = styled.li`
 	line-height: 2rem;
@@ -29,7 +30,11 @@ const PlaylistItem = ({ playlists, setPlaylists, playlist, playlist_item }) => {
 		await playlistApi.deleteItemFromPlaylist(item_id, playlist_id)
 
 		const savedPlaylists = await playlistApi.getAllPlaylists()
-		setPlaylists(savedPlaylists.data)
+		if (savedPlaylists.status === 400) {
+			toast('duplicate playlist name')
+		} else {
+			setPlaylists(savedPlaylists.data)
+		}
 	}
 
 	return (

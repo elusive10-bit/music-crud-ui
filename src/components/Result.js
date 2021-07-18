@@ -104,7 +104,9 @@ const Result = ({
 			<Modal show={show} size='sm' onHide={handleClose}>
 				<Modal.Header>
 					<Modal.Title>Add to Playlists</Modal.Title>
-					<span onClick={handleClose}>X</span>
+					<Button variant='danger' onClick={handleClose}>
+						x
+					</Button>
 				</Modal.Header>
 				<Modal.Body>
 					{playlists.length > 0 ? notEmptyPlaylist() : emptyPlaylist()}
