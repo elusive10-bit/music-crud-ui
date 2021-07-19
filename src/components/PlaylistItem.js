@@ -11,7 +11,7 @@ const List = styled.li`
 	justify-content: space-between;
 	min-width: 200px;
 	max-width: 400px;
-	border: 1px solid #aaa;
+	border: 1px solid #777;
 	border-radius: 3px;
 	margin-bottom: 10px;
 	padding: 10px;

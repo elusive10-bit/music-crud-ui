@@ -11,6 +11,10 @@ const Form = styled(BootstrapForm)`
 	button {
 		margin-left: 10px;
 	}
+
+	.form-control {
+		border: 1px solid #555;
+	}
 `
 
 const PlaylistContainer = styled.div`
