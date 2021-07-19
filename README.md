@@ -3,14 +3,24 @@
 This project still has limited features including:
 
 Authentication:
-Register User
-Login User
+
+  Register User
+
+  Login User
 
 CRUD Operations:
-Add Playlist
-Remove Playlist
-Add Result to Playlist
-Remove Result to Playlist
+
+  Add Playlist
+
+  Remove Playlist
+
+  Add Result to Playlist
+
+  Remove Result to Playlist
+
+Search Functionality:
+  
+  Search Results
 
 
 # Getting Started with Create React App
