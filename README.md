@@ -1,3 +1,8 @@
+# If you are cloning this repository 
+
+npm install before running the app
+
+
 # App features
 
 This project still has limited features including:
