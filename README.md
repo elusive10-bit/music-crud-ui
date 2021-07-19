@@ -8,13 +8,13 @@ before running the app
 
 This project still has limited features including:
 
-Authentication:
+## Authentication:
 
   Register User
 
   Login User
 
-CRUD Operations:
+## CRUD Operations:
 
   Add Playlist
 
@@ -24,7 +24,7 @@ CRUD Operations:
 
   Remove Result to Playlist
 
-Search Functionality:
+## Search Functionality:
   
   Search Results
 
