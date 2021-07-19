@@ -1,6 +1,7 @@
 # If you are cloning this repository 
 
-npm install before running the app
+### `npm install` 
+before running the app
 
 
 # App features
